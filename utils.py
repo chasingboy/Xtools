@@ -42,7 +42,8 @@ def convert_C_to_ipv4(text):
     for line in text.split('\n'):
         try:
             ips = ipaddress.ip_network(line.strip(' '))
-            ret += '\n'.join(ips)
+            for ip in ips:
+                ret += str(ip) + '\n'
         except:
             sublime.message_dialog('[error] IP C is invaild! Please check...')
     return ret
