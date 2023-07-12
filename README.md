@@ -89,5 +89,11 @@ https://github.com/xinyu2428/HTML_TOOLS
 
 ⚠️注意：命令行功能目前只支持 macOS。
 
+###安装
+下载源码，masOS 终端调用需要 applescript 模块。re
+进入到 Sublime Text 插件目录：Preferences->Browse Packpages
+
+
+
 ### 特别感谢
 xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
