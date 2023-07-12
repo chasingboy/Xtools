@@ -1,0 +1,167 @@
+[
+    {
+        "id": "xtools",
+        "caption": "Xtools",
+        "children": [
+            {
+                "caption": "IP | Domain | URL",
+                "children": [
+                    {
+                        "caption": "Select ipv4 (LAN)",
+                        "command": "select_ipv4_lan"
+                   },
+                   {
+                        "caption": "Select ipv4 (WAN)",
+                        "command": "select_ipv4_wan"
+                   },
+                   {
+                        "caption": "Convert ipv4 to C",
+                        "command": "convert_ip2c"
+                   },
+                   {
+                        "caption": "Convert C to ipv4",
+                        "command": "convert_c2ip"
+                   },
+                   {
+                        "caption": "Convert ipv4 to B",
+                        "command": "convert_ip2b"
+                   },
+                   {
+                        "caption": "Select domain (root)",
+                        "command": "select_domain_root"
+                   },
+                   {
+                        "caption": "Select domain (all)",
+                        "command": "select_domain_all"
+                   },
+                   {
+                        "caption": "Select urls (- path)",
+                        "command": "select_urls_exclude_path"
+                   },
+                   {
+                        "caption": "Select urls (+ path)",
+                        "command": "select_urls_include_path"
+                   },
+                   {
+                        "caption": "Filter ip (DNS,CDN)",
+                        "command": "filter_dns_cdn_host"
+                   },
+                   {
+                        "caption": "Filter domain (DNS,CDN)",
+                        "command": "filter_dns_cdn_domain"
+                   },
+                ]
+            },
+            {
+                "caption": "Text Edit",
+                "children": [
+                    {
+                        "caption": "Remove Special Chars",
+                        "command": "remove_special_chars"
+                   },
+                   {
+                        "caption": "Remove Space Char",
+                        "command": "remove_specific_string",
+                        "args": {"str":"space"}
+                   },
+                   {
+                        "caption": "Remove Specific String [*]",
+                        "command": "remove_specific_string",
+                        "args": {"str":"[*]"}
+                   },
+                   {
+                        "caption": "Remove Specific String (*)",
+                        "command": "remove_specific_string",
+                        "args": {"str":"(*)"}
+                   },
+                   {
+                        "caption": "Delete Lines (match input)",
+                        "command": "delete_lines"
+                   },
+                   {
+                        "caption": "Select Lines (match input)",
+                        "command": "select_lines"
+                   },
+                   {
+                        "caption": "Replace Key To Value",
+                        "command": "replace_key_to_value"
+                   },
+                   {
+                        "caption": "Replace Value To Key",
+                        "command": "replace_value_to_key"
+                   },
+                   
+                ]
+            },
+            {
+                "caption": "Text Encode | Decode",
+                "children": [
+                    {
+                        "caption": "Base64 Encode (text)",
+                        "command": "base64_encode_text"
+                   },
+                   {
+                        "caption": "Base64 Decode (text)",
+                        "command": "base64_decode_text"
+                   },
+                   {
+                        "caption": "Base64 Encode (line)",
+                        "command": "base64_encode_line"
+                   },
+                   {
+                        "caption": "Base64 Decode (line)",
+                        "command": "base64_decode_line"
+                   },
+                   {
+                        "caption": "Md5 Hash (text)",
+                        "command": "md5_encrypt_text"
+                    },
+                    {
+                        "caption": "Md5 Hash (line)",
+                        "command": "md5_encrypt_line"
+                    },
+                ]
+            },
+            {
+                "caption": "Running Command",
+                "children": [
+                    {
+                        "caption": "curl (Download File)",
+                        "command": "curl_download_file"
+                    },
+                    /* 通过 <args->cmd> 设置命令, 设置目标为 target.txt, 运行时自动替换为临时文件
+                       eg: httpx -l target.txt
+                       */
+                    {
+                        "caption": "httpx",
+                        "command": "run_cmd",
+                        "args": {"cmd":"httpx -sc -title -l target.txt"}
+                    },
+                    {
+                        "caption": "nuclei",
+                        "command": "run_cmd",
+                        "args": {"cmd":"nuclei -l target.txt"}
+                    },
+                    {
+                        "caption": "sqlmap",
+                        "command": "run_cmd",
+                        "args": {"cmd":"sqlmap -r target.txt"}
+                    },
+
+                    /* -- END -- */
+
+                ]
+            },
+            
+            {
+                "caption": "Setting Config",
+                "command": "setting_config"
+            },
+            {
+
+                "caption": "Input Text",
+                "command": "input_text"
+            },
+        ]
+    }
+]
