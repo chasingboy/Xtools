@@ -89,11 +89,12 @@ https://github.com/xinyu2428/HTML_TOOLS
 
 ⚠️注意：命令行功能目前只支持 macOS。
 
-###安装
-下载源码，masOS 终端调用需要 applescript 模块。re
-进入到 Sublime Text 插件目录：Preferences->Browse Packpages
+### 安装
+通过 realse 下载源码：
+注意：python 调用 masOS 终端需要 applescript 模块。
 
-
+进入到 Sublime Text 插件目录：Preferences->Browse Packpages，把 Xtools 解压放在该目录下即可。
+<img width="1730" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/6d4a5c50-1079-4534-8acf-9aec8213dc23">
 
 ### 特别感谢
 xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
