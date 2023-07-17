@@ -58,7 +58,6 @@ https://github.com/xinyu2428/HTML_TOOLS
 6. 在处理需要输入时，选择 Input Text 即可打开输入框。
 <img width="1698" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/96b80ebb-c73d-4666-b527-fb998d4d2f1b">
 
-
 ### 配置命令行
 选择 Setting Config 即可打开配置文件，并在注释的范围内添加需要的系统命令。统一格式为 `"args": {"cmd":"sqlmap -r target.txt"}`， 比如 slqmap，httpx，nuclei。
 
@@ -85,9 +84,21 @@ https://github.com/xinyu2428/HTML_TOOLS
                     /* -- END -- */
 ```
 
-⚠️注意：命令行功能目前只支持 macOS。
+~~⚠️注意：命令行功能目前只支持 macOS。~~
 
-#### 新增支持 windows 调用命令行
+#### 新增支持 windows 命令行调用
+```
+/* 通过 <args->cmd> 设置命令, 设置目标为 target.txt, 运行时自动替换为临时文件
+                       eg: httpx -l target.txt
+                       */
+                    {
+                        "caption": "httpx",
+                        "command": "run_cmd",
+                        "args": {"cmd":"C:\\Users\\kali\\httpx\\httpx -sc -title -l target.txt"}
+                    },
+                    /* -- END -- */
+```
+比如配置 httpx 命令，或者把 httpx 命令添加到环境变量。
 <img width="1846" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ecc36edb-c1d0-40d2-907c-7fd90bce36ac">
 
 
@@ -98,5 +109,23 @@ https://github.com/xinyu2428/HTML_TOOLS
 <img width="1730" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/6d4a5c50-1079-4534-8acf-9aec8213dc23">
 注意：python 调用 masOS 终端需要 applescript 模块，需在 Xtools 目录下解压 applescript.zip
 
+#### 安装报错
+最近有师傅反馈，window 11 安装时出现错误，功能无法正常使用。经过调试，发现是师傅的系统**用户名是中文**
+```
+if platform == 'windows':
+    HOME = os.environ['HOMEPATH']
+else:
+    HOME = os.environ['HOME']
+
+'''
+如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件自定义系统用户名，并删除 # 注释。
+'''
+# HOME = "/Users" + u"<用户名>"
+workdir = os.path.join(HOME,'.xtools')
+```
+
 ### 特别感谢
 xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
+
+### 更新记录
+[+] 增加 Windows 命令行调用支持。 
