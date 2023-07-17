@@ -1,5 +1,5 @@
 # -*- coding=utf-8 -*-
-# functions lib
+# Functions lib
 
 import sublime
 from .config import *
@@ -8,13 +8,9 @@ from .applescript import tell
 from urllib.parse import urlparse
 import ipaddress
 
-# setting working dir
-workdir = os.environ['HOME'] + '/.xtools'
-if os.path.exists(workdir):
-    pass
-else:
-    os.mkdir(workdir)
 
+# Get system type
+platform = sublime.platform()
 
 def convert_ipv4_to_C(view):
     rets = {}
@@ -136,11 +132,18 @@ def select_urls(view, path=False):
 
 
 def exec_command(cmd):
-    tell.app('Terminal','do script"{cmd}"'.format(cmd=cmd),background=True)
+    if platform == 'windows':
+        os.system('start cmd /k ' + cmd)
+    elif platform == 'osx':
+        tell.app('Terminal','do script"{cmd}"'.format(cmd=cmd),background=True)
+    elif platform == 'linux':
+        os.system("gnome-terminal -e 'bash -c \"{cmd}\"'".format(cmd=cmd))
+    else:
+        sublime.message_dialog('[waring] <Run Command> module is not supported this system')
 
 
-def write_file(text):
-    file = workdir + '/' + hashlib.md5(text.encode('utf-8')).hexdigest()
+def write_file(workdir,text):
+    file = os.path.join(workdir,hashlib.md5(text.encode('utf-8')).hexdigest())
     with open(file,'w') as fw:
         fw.write(text)
 
@@ -166,3 +169,15 @@ def is_url(urls):
         else:
             errurls += url + '\n'
     return errurls
+
+
+def is_contain_chinese(word):
+    """
+    判断字符串是否包含中文字符
+    :param word: 字符串
+    :return: 布尔值，True表示包含中文，False表示不包含中文
+    """
+    pattern = re.compile(r'[\u4e00-\u9fa5]')
+    match = pattern.search(word)
+    return True if match else False
+
