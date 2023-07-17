@@ -87,6 +87,10 @@ https://github.com/xinyu2428/HTML_TOOLS
 
 ⚠️注意：命令行功能目前只支持 macOS。
 
+#### 新增支持 windows 调用命令行
+<img width="1846" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ecc36edb-c1d0-40d2-907c-7fd90bce36ac">
+
+
 ### 安装
 下载源码，github 下载后文件名 Xtools-main.zip，解压后需重命名为 Xtools，否则可能某些路径出错。
 
