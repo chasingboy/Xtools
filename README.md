@@ -110,7 +110,7 @@ https://github.com/xinyu2428/HTML_TOOLS
 注意：python 调用 masOS 终端需要 applescript 模块，需在 Xtools 目录下解压 applescript.zip
 
 #### 安装报错
-最近有师傅反馈，window 11 安装时出现错误，功能无法正常使用。经过调试，发现是师傅的系统**用户名是中文**
+最近有师傅反馈，window 11 安装时出现错误，功能无法正常使用。经过调试，发现是师傅的系统**用户名是中文**。
 ```
 if platform == 'windows':
     HOME = os.environ['HOMEPATH']
