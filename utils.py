@@ -84,7 +84,7 @@ def select_ipv4(view):
 
 def is_lan(ip):
     try:
-        return ipaddress.ip_address(ip.strip()).is_private
+        return ipaddress.ip_address(ip.strip()).is_private or ipaddress.ip_address(ip.strip()).is_loopback
     except Exception as e:
         return False
 
