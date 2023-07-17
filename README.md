@@ -7,8 +7,7 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
 ```
 https://github.com/xinyu2428/HTML_TOOLS
 ```
-<img width="1748" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ef3dc1d7-d5ff-4cfa-9179-21da0200801d">
-<br>
+<img width="1748" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ef3dc1d7-d5ff-4cfa-9179-21da0200801d"><br/>
 
 在日常使用过程中，总感觉缺少了点什么。思考着继续补充 javascript 代码，发现无法和命令行进行交互，遂放弃。一番挣扎过后，发现很多时候都在使用 Subliem Text 编辑器，嗯，最后的思路就是集成在 Sublime Text 插件。这样一来，同时减少了很多的 ctl+c 和 ctl+v。  
 
@@ -36,23 +35,29 @@ https://github.com/xinyu2428/HTML_TOOLS
    * ......（自行配置）
   
 ### 使用截图
-1. 提取 IP。
-<img width="1727" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/b53054e3-2192-4292-98cb-08068bbbe219">
+1. 在文本中提取 IP。
 
+<img width="1736" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/b53054e3-2192-4292-98cb-08068bbbe219"><br/>
+    
 2. 按行进行 base64 编码。
-<img width="1736" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ac3ffa1f-ff2a-45c8-b018-72dc37891108">
+
+<img width="1736" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ac3ffa1f-ff2a-45c8-b018-72dc37891108"><br/>
 
 3. 按字典进行 key 和 value 替换。
-<img width="1721" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/c2c0d300-26c7-4b49-aa5f-0c06f63d8b38">
+
+<img width="1721" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/c2c0d300-26c7-4b49-aa5f-0c06f63d8b38"><br/>
 
 4. 打开终端调用 sqlmap。
-<img width="1736" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/933036ac-52be-4fac-b315-73bc59e6cafd">
+
+<img width="1736" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/933036ac-52be-4fac-b315-73bc59e6cafd"><br/>
 
 5. curl 批量下载文件，会在桌面自动创建 work 文件夹，并保存下载结果。
-<img width="1731" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/071abf87-839d-49f3-bca6-ac9719327e8e">
+
+<img width="1731" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/071abf87-839d-49f3-bca6-ac9719327e8e"><br/>
 
 6. 在处理需要输入时，选择 Input Text 即可打开输入框。
-<img width="1698" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/96b80ebb-c73d-4666-b527-fb998d4d2f1b">
+
+<img width="1698" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/96b80ebb-c73d-4666-b527-fb998d4d2f1b"><br/>
 
 ### 配置命令行
 选择 Setting Config 即可打开配置文件，并在注释的范围内添加需要的系统命令。统一格式为 `"args": {"cmd":"sqlmap -r target.txt"}`， 比如 slqmap，httpx，nuclei。
@@ -95,6 +100,7 @@ https://github.com/xinyu2428/HTML_TOOLS
                     /* -- END -- */
 ```
 比如配置 httpx 命令，或者把 httpx 命令添加到环境变量。
+
 <img width="1846" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ecc36edb-c1d0-40d2-907c-7fd90bce36ac">
 
 
@@ -102,7 +108,9 @@ https://github.com/xinyu2428/HTML_TOOLS
 下载源码，github 下载后文件名 Xtools-main.zip，解压后需重命名为 Xtools，否则可能某些路径出错。
 
 进入到 Sublime Text 插件目录：Preferences->Browse Packpages，把 Xtools 放在该目录下即可。
-<img width="1730" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/6d4a5c50-1079-4534-8acf-9aec8213dc23">
+
+<img width="1730" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/6d4a5c50-1079-4534-8acf-9aec8213dc23"><br/>
+
 注意：python 调用 masOS 终端需要 applescript 模块，需在 Xtools 目录下解压 applescript.zip
 
 #### 安装报错
@@ -124,4 +132,4 @@ workdir = os.path.join(HOME,'.xtools')
 xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
 
 ### 更新记录
-[+] 增加 Windows 命令行调用支持。 
+[+] 2023-07-15 增加 Windows 命令行调用支持。 
