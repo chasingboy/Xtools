@@ -1,10 +1,38 @@
+# -*- coding=utf-8 -*-
+
 import sublime_plugin
 from sublime import Region
 from .utils import *
 import json,time
 import base64,hashlib
 
-# ip,domain,url
+
+"""
+: Setting working directory
+: HOME = '/Users/xxx/'
+: workdir = '$HOME/.xtools'
+"""
+
+if platform == 'windows':
+    HOME = os.environ['HOMEPATH']
+else:
+    HOME = os.environ['HOME']
+
+# HOME = "/Users" + u"<用户名>"
+workdir = os.path.join(HOME,'.xtools')
+
+try:
+    if os.path.exists(workdir):
+        print('.xtools directory is exists')
+    else:
+        os.mkdir(workdir)
+        print('Create .xtools directory successfully')
+except:
+    sublime.message_dialog('[waring] .xtools directory is created failed')
+
+
+
+# ip, domain, url
 class SelectIpv4LanCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         lan_ips,wan_ips =select_ipv4(self.view)
@@ -29,7 +57,7 @@ class ConvertIp2cCommand(sublime_plugin.TextCommand):
 
 class ConvertC2ipCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        text = text = get_buffer_text(self.view)
+        text = get_buffer_text(self.view)
         text = convert_C_to_ipv4(text)
         new_view(self.view, edit, text)
 
@@ -99,7 +127,7 @@ class FilterDnsCdnDomainCommand(sublime_plugin.TextCommand):
         update_file(self.view, edit, text)
 
 
-# text edit
+# Text edit
 class RemoveSpecialCharsCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = get_buffer_text(self.view)
@@ -204,7 +232,7 @@ class RecoverJsLinkCommand(sublime_plugin.TextCommand):
             panel_print(self.view, edit, rets)
 
 
-# text encode
+# Text encode
 class Base64EncodeTextCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = get_buffer_text(self.view)
@@ -255,11 +283,12 @@ class Md5EncryptLineCommand(sublime_plugin.TextCommand):
         panel_print(self.view, edit, lines)
 
 
-# command
+# Command
 class RunCmdCommand(sublime_plugin.TextCommand):
     def run(self, edit, cmd):
         text = get_buffer_text(self.view)
-        file = write_file(text)
+        global workdir
+        file = write_file(workdir,text)
         cmd = cmd.replace('target.txt',file)
         exec_command(cmd)
 
@@ -267,11 +296,12 @@ class RunCmdCommand(sublime_plugin.TextCommand):
 class CurlDownloadFileCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = get_buffer_text(self.view).strip('\n')
-        file = write_file(text)
+        global workdir
+        file = write_file(workdir,text)
         ticks = str(int(time.time()))
 
-        workdir = os.environ['HOME'] + '/Desktop/work'
-        dwdir = workdir + '/' + ticks
+        workdir = os.path.join(HOME,'Desktop','work')
+        dwdir = os.path.join(workdir,ticks)
         
         if os.path.exists(workdir) == False:
             os.mkdir(workdir)
@@ -286,27 +316,30 @@ class CurlDownloadFileCommand(sublime_plugin.TextCommand):
             return
 
         if os.path.exists(workdir):
-            cmd = 'cd {dir};for line in $(cat {file});do curl -k -O ${line};done;'.format(dir=dwdir,file=file,line='{line}')
+            if platform == 'windows':
+                cmd = '"cd {dir} && FOR /f %f IN ({file}) DO curl -k -O %f"'.format(dir=dwdir,file=file)
+            else:
+                cmd = 'cd {dir};for line in $(cat {file});do curl -k -O ${line};done;'.format(dir=dwdir,file=file,line='{line}')
             exec_command(cmd)
         else:
             panel_print(self.view, edit, '[!] $HOME/Desktop/work folder not exists!')
 
 
-# input text
+# Input text
 class InputTextCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         panel_print(self.view, edit, 'Input Text:\n')
 
 
-# setting config
+# Setting config
 class SettingConfigCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        config_file = sublime.packages_path() + "/Xtools/Context.sublime-menu"
+        config_file = os.path.join(sublime.packages_path(),"Xtools","Context.sublime-menu")
         self.view.window().open_file(config_file)
         
 
 
-# function lib
+# Function lib
 
 def get_buffer_text(view):
     site = Region(0, view.size())
