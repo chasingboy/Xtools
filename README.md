@@ -20,6 +20,7 @@ https://github.com/xinyu2428/HTML_TOOLS
    * IPv4 和 C 段互转
    * 提取 domain（根域名、所有域名）
    * 提取 url（有路径、无路径）
+   * 提取 router（js、text）
    * 过滤 CDN 和 DNS 域名和IP（需补充）
 2. 简单文本处理
    * 删除特殊字符、空格、`[*]`、`(*)` （* 表示括号内的所有内容）
