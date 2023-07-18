@@ -7,7 +7,6 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
 ```
 https://github.com/xinyu2428/HTML_TOOLS
 ```
-<img width="1748" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ef3dc1d7-d5ff-4cfa-9179-21da0200801d"><br/>
 
 在日常使用过程中，总感觉缺少了点什么。思考着继续补充 javascript 代码，发现无法和命令行进行交互，遂放弃。一番挣扎过后，发现很多时候都在使用 Subliem Text 编辑器，嗯，最后的思路就是集成在 Sublime Text 插件。这样一来，同时减少了很多的 ctl+c 和 ctl+v。  
 
