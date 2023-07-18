@@ -132,6 +132,8 @@ workdir = os.path.join(HOME,'.xtools')
 
 ### 特别感谢
 xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
+linkfinder https://github.com/GerbenJavado/LinkFinder
 
 ### 更新记录
-[+] 2023-07-15 增加 Windows 命令行调用支持。 
+[+] 2023-07-15 增加 Windows 命令行调用支持。
+[+] 2023-07-18 增加一键排序去重、提取 javascript 文件路由。
