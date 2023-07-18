@@ -4,7 +4,7 @@
         "caption": "Xtools",
         "children": [
             {
-                "caption": "IP | Domain | URL",
+                "caption": "IP And Domain",
                 "children": [
                     {
                         "caption": "Select ipv4 (LAN)",
@@ -35,14 +35,6 @@
                         "command": "select_domain_all"
                    },
                    {
-                        "caption": "Select urls (- path)",
-                        "command": "select_urls_exclude_path"
-                   },
-                   {
-                        "caption": "Select urls (+ path)",
-                        "command": "select_urls_include_path"
-                   },
-                   {
                         "caption": "Filter ip (DNS,CDN)",
                         "command": "filter_dns_cdn_host"
                    },
@@ -50,6 +42,28 @@
                         "caption": "Filter domain (DNS,CDN)",
                         "command": "filter_dns_cdn_domain"
                    },
+                ]
+            },
+            {
+                "caption": "URL And Router",
+                "children": [
+                    {
+                        "caption": "Select Urls (- path)",
+                        "command": "select_urls_exclude_path"
+                   },
+                   {
+                        "caption": "Select Urls (+ path)",
+                        "command": "select_urls_include_path"
+                   },
+                   {
+                        "caption": "Select Routers (js,text)",
+                        "command": "select_routers_from_text"
+
+                   },
+                   {
+                        "caption": "Recover Js Link (webpack)",
+                        "command": "recover_js_link"
+                    },
                 ]
             },
             {
@@ -90,7 +104,10 @@
                         "caption": "Replace Value To Key",
                         "command": "replace_value_to_key"
                    },
-                   
+                   {
+                        "caption": "Sort And Unique",
+                        "command": "sort_and_unique_text"
+                   },
                 ]
             },
             {
