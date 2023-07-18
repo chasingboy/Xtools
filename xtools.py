@@ -11,14 +11,20 @@ import base64,hashlib
 : Setting working directory
 : HOME = '/Users/xxx/'
 : workdir = '$HOME/.xtools'
-"""
+"""  
 
 if platform == 'windows':
     HOME = os.environ['HOMEPATH']
 else:
     HOME = os.environ['HOME']
 
-# HOME = "/Users" + u"<用户名>"
+'''
+如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件自定义系统用户名，并删除 # 注释。
+'''
+# HOME = "/Users/" + u"<用户名>"  # osx
+# HOME = "/home/" + u"<用户名>"  # linux
+# HOME = "C:\Users\" + u"<用户名>"  # windows
+
 workdir = os.path.join(HOME,'.xtools')
 
 try:
@@ -32,7 +38,7 @@ except:
 
 
 
-# ip, domain, url
+# IP And Domain
 class SelectIpv4LanCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         lan_ips,wan_ips =select_ipv4(self.view)
@@ -71,24 +77,14 @@ class ConvertIp2bCommand(sublime_plugin.TextCommand):
 class SelectDomainRootCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         domains,rootdomains = select_domain(self.view)
-        new_view(self.view, edit, rootdomains)
+        text = '\n'.join(rootdomains)
+        new_view(self.view, edit, text)
 
 
 class SelectDomainAllCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         domains,rootdomains = select_domain(self.view)
-        new_view(self.view, edit, domains)
-
-
-class SelectUrlsExcludePathCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
-        text = select_urls(self.view, False)
-        new_view(self.view, edit, text)
-
-
-class SelectUrlsIncludePathCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
-        text = select_urls(self.view, True)
+        text = '\n'.join(domains)
         new_view(self.view, edit, text)
 
 
@@ -127,11 +123,48 @@ class FilterDnsCdnDomainCommand(sublime_plugin.TextCommand):
         update_file(self.view, edit, text)
 
 
-# Text edit
+# URL And Router 
+class SelectUrlsExcludePathCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        text = select_urls(self.view, False)
+        new_view(self.view, edit, text)
+
+
+class SelectUrlsIncludePathCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        text = select_urls(self.view, True)
+        new_view(self.view, edit, text)
+
+
+class SelectRoutersFromTextCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        text = get_buffer_text(self.view)
+        results = select_routers(text)
+        text = filter_routers(results)
+        new_view(self.view, edit, text)
+
+
+class RecoverJsLinkCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        text = get_buffer_text(self.view)
+        prefix = get_console_text(self.view).strip('\n').strip('/') + '/'
+
+        try:
+            text = json.loads(text)
+        except:
+            sublime.message_dialog('[error] Json data has error! Please check...')
+        else:
+            rets = ''
+            for key in text.keys():
+                rets += prefix + key + '.' + text[key] + '.js\n'
+            panel_print(self.view, edit, rets)
+
+
+# Text Edit
 class RemoveSpecialCharsCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = get_buffer_text(self.view)
-        text = re.sub(r"(,|\.|:|\ |)",'',text)        
+        text = re.sub(r"(\ |,|\.|\?|<|>|:|;|\"|'|{|}|\[|\]|\\|~|!|@|#|$|%|^|&|\*|\(|\)|\+|-|=|)",'',text)        
         update_file(self.view, edit, text)
 
 
@@ -216,20 +249,12 @@ class ReplaceValueToKeyCommand(sublime_plugin.TextCommand):
         new_view(self.view, edit, text)
 
 
-class RecoverJsLinkCommand(sublime_plugin.TextCommand):
+class SortAndUniqueTextCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = get_buffer_text(self.view)
-        prefix = get_console_text(self.view).strip('\n').strip('/') + '/'
-
-        try:
-            text = json.loads(text)
-        except:
-            sublime.message_dialog('[error] Json data has error! Please check...')
-        else:
-            rets = ''
-            for key in text.keys():
-                rets += prefix + key + '.' + text[key] + '.js\n'
-            panel_print(self.view, edit, rets)
+        text = list(set(text.split('\n')))
+        text = '\n'.join(sorted(text))
+        update_file(self.view, edit, text)
 
 
 # Text encode
