@@ -12,6 +12,7 @@ import ipaddress
 # Get system type
 platform = sublime.platform()
 
+
 def convert_ipv4_to_C(view):
     rets = {}
     pattern = r'\d{1,3}\.\d{1,3}\.\d{1,3}'
@@ -93,14 +94,16 @@ def select_domain(view):
     pattern = r'([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+('+top_sufix+'|'+country_sufix+')'
     regions = view.find_all(pattern, sublime.IGNORECASE)
 
-    rootdomains = ''
-    domains = ''
+    rootdomains = []
+    domains = []
     for region in regions:
         text = view.substr(region)
-        domains += text + '\n'
-        rootdomains += select_rootdomain(text) + '\n'
+        domains.append(text)
+        rootdomains.append(select_rootdomain(text))
 
-    return domains,rootdomains
+    domains = list(set(domains))
+    rootdomains = list(set(rootdomains))
+    return sorted(domains), sorted(rootdomains)
 
 
 def select_rootdomain(text):
@@ -171,13 +174,88 @@ def is_url(urls):
     return errurls
 
 
-def is_contain_chinese(word):
-    """
-    判断字符串是否包含中文字符
-    :param word: 字符串
-    :return: 布尔值，True表示包含中文，False表示不包含中文
-    """
-    pattern = re.compile(r'[\u4e00-\u9fa5]')
-    match = pattern.search(word)
-    return True if match else False
+'''
+Select Routers
+: urls,sort,filter
+: Regex copy from linkfinder
+'''
 
+regex_str = r"""
+
+  (?:"|')                               # Start newline delimiter
+
+  (
+    ((?:[a-zA-Z]{1,10}://|//)           # Match a scheme [a-Z]*1-10 or //
+    [^"'/]{1,}\.                        # Match a domainname (any character + dot)
+    [a-zA-Z]{2,}[^"']{0,})              # The domainextension and/or path
+
+    |
+
+    ((?:/|\.\./|\./)                    # Start with /,../,./
+    [^"'><,;| *()(%%$^/\\\[\]]          # Next character can't be...
+    [^"'><,;|()]{1,})                   # Rest of the characters can't be
+
+    |
+
+    ([a-zA-Z0-9_\-/]{1,}/               # Relative endpoint with /
+    [a-zA-Z0-9_\-/]{1,}                 # Resource name
+    \.(?:[a-zA-Z]{1,4}|action)          # Rest + extension (length 1-4 or action)
+    (?:[\?|#][^"|']{0,}|))              # ? or # mark with parameters
+
+    |
+
+    ([a-zA-Z0-9_\-/]{1,}/               # REST API (no extension) with /
+    [a-zA-Z0-9_\-/]{3,}                 # Proper REST endpoints usually have 3+ chars
+    (?:[\?|#][^"|']{0,}|))              # ? or # mark with parameters
+
+    |
+
+    ([a-zA-Z0-9_\-]{1,}                 # filename
+    \.(?:php|asp|aspx|jsp|json|
+         action|html|js|txt|xml)        # . + extension
+    (?:[\?|#][^"|']{0,}|))              # ? or # mark with parameters
+
+  )
+
+  (?:"|')                               # End newline delimiter
+
+"""
+
+
+def select_routers(text):
+    regex = re.compile(regex_str, re.VERBOSE)
+    routers = [m.group(1).lstrip('/') for m in re.finditer(regex, text)]
+    return routers
+
+
+def filter_routers(results):
+    file_exts = ['png','jpg','jpeg','gif','js','vue','ico','svg','css','ts','bmp','ttf','woff','woff2']
+    routers = ['\n[+] Routers:\n']
+    links = ['\n[+] Links:\n']
+    filters = ['\n[+] Filters:\n']
+    
+    results = sorted(list(set(results)))
+    
+    for router in results:   
+        try:
+            if 'http' in router:
+                links.append(router)
+                continue
+            
+            temp = router
+            if '?' in temp:
+                temp = temp.split('?')[0]
+                if temp in routers:
+                    x = routers.pop()
+
+            ext = temp.split('.')[-1]
+            if ext in file_exts:
+                filters.append(router)
+            else:
+                routers.append(router)
+        except:
+            pass
+
+    routers = [('/' + line) for line in routers]
+    text = '\n'.join(routers+links+filters).lstrip('/')
+    return text
