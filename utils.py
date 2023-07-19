@@ -4,7 +4,6 @@
 import sublime
 from .config import *
 import re, os, hashlib
-from .applescript import tell
 from urllib.parse import urlparse
 import ipaddress
 
@@ -12,6 +11,8 @@ import ipaddress
 # Get system type
 platform = sublime.platform()
 
+if platform == 'osx':
+    from .applescript import tell
 
 def convert_ipv4_to_C(view):
     rets = {}
