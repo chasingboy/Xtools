@@ -119,7 +119,7 @@ def select_rootdomain(text):
 
 
 def select_urls(view, path=False):
-    pattern = r'https?://\S+'
+    pattern = r'https?://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]'
     regions = view.find_all(pattern, sublime.IGNORECASE)
 
     array = []
