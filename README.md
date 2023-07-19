@@ -107,7 +107,7 @@ https://github.com/xinyu2428/HTML_TOOLS
 ### 安装
 下载源码，github 下载后文件名 Xtools-main.zip，解压后需重命名为 Xtools，否则可能某些路径出错。
 
-进入到 Sublime Text 插件目录：Preferences->Browse Packpages，把 Xtools 放在该目录下即可。
+进入到 Sublime Text 插件目录：Preferences->Browse Packpages，把 Xtools 放在该目录下，同时解压 applescript 文件即可。
 
 <img width="1730" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/6d4a5c50-1079-4534-8acf-9aec8213dc23"><br/>
 
