@@ -11,9 +11,6 @@ import ipaddress
 # Get system type
 platform = sublime.platform()
 
-if platform == 'osx':
-    from .applescript import tell
-
 def convert_ipv4_to_C(view):
     rets = {}
     pattern = r'\d{1,3}\.\d{1,3}\.\d{1,3}'
@@ -139,12 +136,17 @@ def exec_command(cmd):
     if platform == 'windows':
         os.system('start cmd /k ' + cmd)
     elif platform == 'osx':
+        try:
+            from .applescript import tell
+        except:
+            sublime.message_dialog('[waring] macOS 请解压 applescript 文件')
+            return 0
         tell.app('Terminal','do script"{cmd}"'.format(cmd=cmd),background=True)
+    
     elif platform == 'linux':
         os.system("gnome-terminal -e 'bash -c \"{cmd}\"'".format(cmd=cmd))
     else:
         sublime.message_dialog('[waring] <Run Command> module is not supported this system')
-
 
 def write_file(workdir,text):
     file = os.path.join(workdir,hashlib.md5(text.encode('utf-8')).hexdigest())
