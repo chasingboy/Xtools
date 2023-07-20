@@ -129,6 +129,14 @@ else:
 # HOME = "C:\Users\" + u"<用户名>"  # windows
 workdir = os.path.join(HOME,'.xtools')
 ```
+#### 功能灰色无法使用
+* 检查系统用户名是否为 **中文**
+* 检查工具文件夹名称是否为 Xtools
+* 检查 applescript 压缩包是否解压
+* 查看 issues
+  ```
+  https://github.com/chasingboy/Xtools/issues
+  ```
 
 ### 特别感谢
 xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
