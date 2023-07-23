@@ -122,7 +122,7 @@ else:
     HOME = os.environ['HOME']
 
 '''
-如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件自定义系统用户名，并删除 # 注释。
+如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件自定义系统<用户名>，并删除 # 注释。
 '''
 # HOME = "/Users/" + u"<用户名>"  # osx
 # HOME = "/home/" + u"<用户名>"  # linux
