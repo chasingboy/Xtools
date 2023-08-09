@@ -60,7 +60,7 @@ https://github.com/xinyu2428/HTML_TOOLS
 <img width="1698" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/96b80ebb-c73d-4666-b527-fb998d4d2f1b"><br/>
 
 ### 配置命令行
-选择 Setting Config 即可打开配置文件，并在注释的范围内添加需要的系统命令。统一格式为 `"args": {"cmd":"sqlmap -r target.txt"}`， 比如 slqmap，httpx，nuclei。
+选择 Setting Config 即可打开配置文件，并在注释的范围内添加需要的系统命令。统一格式为 `"args": {"cmd":"sqlmap -r target.txt"}`， 比如 slqmap，httpx，nuclei、dirscan 对应不同字典。
 
 ```
 /* 通过 <args->cmd> 设置命令, 设置目标为 target.txt, 运行时自动替换为临时文件
@@ -80,6 +80,16 @@ https://github.com/xinyu2428/HTML_TOOLS
                         "caption": "sqlmap",
                         "command": "run_cmd",
                         "args": {"cmd":"sqlmap -r target.txt"}
+                    },
+                    {
+                        "caption": "dirscan (dir1.txt)",
+                        "command": "run_cmd",
+                        "args": {"cmd":"dirscan -w /.../dicts/dir1.txt -l target.txt"}
+                    },
+                    {
+                        "caption": "dirscan (dir2.txt)",
+                        "command": "run_cmd",
+                        "args": {"cmd":"dirscan -w /.../dicts/dir2.txt -l target.txt"}
                     },
 
                     /* -- END -- */
