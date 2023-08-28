@@ -15,6 +15,10 @@
                         "command": "select_ipv4_wan"
                    },
                    {
+                        "caption": "Select ipv4 (Range)",
+                        "command": "select_ipv4_range"
+                   },
+                   {
                         "caption": "Convert ipv4 to C",
                         "command": "convert_ip2c"
                    },
