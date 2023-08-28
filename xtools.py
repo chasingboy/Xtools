@@ -54,6 +54,12 @@ class SelectIpv4WanCommand(sublime_plugin.TextCommand):
         text = '\n'.join(wan_ips)
         new_view(self.view, edit, text)
 
+class SelectIpv4RangeCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        ips = select_ipv4_range(self.view)
+        ips.sort()
+        text = '\n'.join(ips)
+        new_view(self.view, edit, text)
 
 class ConvertIp2cCommand(sublime_plugin.TextCommand):
     def run(self, edit):
