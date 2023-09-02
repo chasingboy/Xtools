@@ -65,19 +65,19 @@ class SelectIpv4RangeCommand(sublime_plugin.TextCommand):
         text = '\n'.join(ips)
         new_view(self.view, edit, text)
 
-class ConvertIp2cCommand(sublime_plugin.TextCommand):
+class ConvertRangeIp2cCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = convert_ipv4_to_C(self.view)
         new_view(self.view, edit, text)
 
 
-class ConvertC2ipCommand(sublime_plugin.TextCommand):
+class ConvertRangeC2ipCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = convert_C_to_ipv4(self.view)
         new_view(self.view, edit, text)
 
 
-class ConvertIp2bCommand(sublime_plugin.TextCommand):
+class ConvertRangeIp2bCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = convert_ipv4_to_B(self.view)
         new_view(self.view, edit, text)
