@@ -21,7 +21,7 @@ else:
 '''
 -> 如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件设置系统的 "<用户名>"
 -> 删除 # 注释
-Eg:
+Eg: 
 HOME = "C:\\Users\\" + u"中文"
 '''
 
@@ -46,7 +46,6 @@ except:
 class SelectIpv4LanCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         lan_ips,wan_ips =select_ipv4(self.view)
-        lan_ips.sort()
         text = '\n'.join(lan_ips)  
         new_view(self.view, edit, text)
 
@@ -54,16 +53,16 @@ class SelectIpv4LanCommand(sublime_plugin.TextCommand):
 class SelectIpv4WanCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         lan_ips,wan_ips =select_ipv4(self.view)
-        wan_ips.sort()
         text = '\n'.join(wan_ips)
         new_view(self.view, edit, text)
+
 
 class SelectIpv4RangeCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         ips = select_ipv4_range(self.view)
-        ips.sort()
         text = '\n'.join(ips)
         new_view(self.view, edit, text)
+
 
 class ConvertRangeIp2cCommand(sublime_plugin.TextCommand):
     def run(self, edit):
@@ -386,8 +385,7 @@ def region_to_text(view,regions):
     for region in regions:
         text.append(view.substr(region))
 
-    text = list(set(text))
-    text.sort()
+    text = sorted(list(set(text)))
     return '\n'.join(text)
 
 
