@@ -136,11 +136,15 @@ else:
     HOME = os.environ['HOME']
 
 '''
-如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件自定义系统<用户名>，并删除 # 注释。
+-> 如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件设置系统的 "<用户名>"
+-> 删除 # 注释
+Eg: 
+HOME = "C:\\Users\\" + u"中文"
 '''
-# HOME = "/Users/" + u"<用户名>"  # osx
-# HOME = "/home/" + u"<用户名>"  # linux
-# HOME = "C:\Users\" + u"<用户名>"  # windows
+
+#HOME = "/Users/" + u"<用户名>"    # osx
+#HOME = "/home/" + u"<用户名>"     # linux
+#HOME = "C:\\Users\\" + u"<用户名>"  # windows
 workdir = os.path.join(HOME,'.xtools')
 ```
 #### 功能灰色无法使用
@@ -162,5 +166,5 @@ linkfinder https://github.com/GerbenJavado/LinkFinder
 
 [+] 2023-07-18 增加一键排序去重、提取 javascript 文件路由。
 
-[+] 2023-08-28 增加提取 IP 段
+[+] 2023-08-28 增加提取 IP 段、支持 192.168.1.1-10 类型格式转
 
