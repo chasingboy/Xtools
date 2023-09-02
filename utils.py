@@ -32,16 +32,42 @@ def convert_ipv4_to_C(view):
     return text
 
 
-def convert_C_to_ipv4(text):
-    ret = ''
-    for line in text.split('\n'):
+def convert_C_to_ipv4(view):
+    pattern = r'(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)((([\-](1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])|/(1\d|2\d|3[0-2]|[1-9]))(\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d))?)?)'
+    regions = view.find_all(pattern)
+    
+    ret = []   
+    for region in regions:
+        line = view.substr(region)
         try:
-            ips = ipaddress.ip_network(line.strip(' '))
-            for ip in ips:
-                ret += str(ip) + '\n'
-        except:
+            if '/' in line:
+                ips = ipaddress.ip_network(line.strip(),strict=False).hosts()
+                for ip in ips:
+                    ret.append(str(ip))
+            elif '-' in line:
+                start,end = line.split('-')
+                ip_range = parse_ip_range(start,end)
+                ret += ip_range
+            else:
+                ret.append(line)
+        except Exception as e:
+            print(e)
             sublime.message_dialog('[error] IP C is invaild! Please check...')
+
+    ret = '\n'.join(sorted(list(set(ret))))
     return ret
+
+
+def parse_ip_range(start,end):
+    if '.' not in end:
+        end = start.rsplit('.',1)[0] + '.' + end
+    
+    start = ipaddress.ip_address(start)
+    end = ipaddress.ip_address(end)
+    ip_range = list(range(int(start),int(end)+1))
+    ip_range = [str(ipaddress.ip_address(ip)) for ip in ip_range]
+    
+    return ip_range
 
 
 def convert_ipv4_to_B(view):
