@@ -166,5 +166,5 @@ linkfinder https://github.com/GerbenJavado/LinkFinder
 
 [+] 2023-07-18 增加一键排序去重、提取 javascript 文件路由。
 
-[+] 2023-08-28 增加提取 IP 段、支持 192.168.1.1-10 类型格式转
+[+] 2023-08-28 增加提取 IP 段、转换 ipv4 支持 192.168.1.1-10 格式
 
