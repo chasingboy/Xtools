@@ -3,7 +3,7 @@
 
 import sublime
 from .config import *
-import re, os, hashlib
+import re, os, hashlib, socket
 from urllib.parse import urlparse
 import ipaddress
 
@@ -54,7 +54,7 @@ def convert_C_to_ipv4(view):
             print(e)
             sublime.message_dialog('[error] IP C is invaild! Please check...')
 
-    ret = '\n'.join(sorted(list(set(ret))))
+    ret = '\n'.join(unique_sort_ipv4(ret))
     return ret
 
 
@@ -105,7 +105,7 @@ def select_ipv4(view):
         else:
             wan_ips.append(text)
             
-    return list(set(lan_ips)),list(set(wan_ips))
+    return unique_sort_ipv4(lan_ips),unique_sort_ipv4(wan_ips)
 
 
 def is_lan(ip):
@@ -113,6 +113,7 @@ def is_lan(ip):
         return ipaddress.ip_address(ip.strip()).is_private or ipaddress.ip_address(ip.strip()).is_loopback
     except Exception as e:
         return False
+
 
 def select_ipv4_range(view):
     pattern = r'(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)((([\-](1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])|/(1\d|2\d|3[0-2]|[1-9]))(\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d))?)?)'
@@ -123,6 +124,7 @@ def select_ipv4_range(view):
         ips.append(text)
     
     return list(set(ips))
+
 
 def select_domain(view):
     pattern = r'([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+('+top_sufix+'|'+country_sufix+')'
@@ -184,6 +186,7 @@ def exec_command(cmd):
     else:
         sublime.message_dialog('[waring] <Run Command> module is not supported this system')
 
+
 def write_file(workdir,text):
     file = os.path.join(workdir,hashlib.md5(text.encode('utf-8')).hexdigest())
     with open(file,'w') as fw:
@@ -211,6 +214,14 @@ def is_url(urls):
         else:
             errurls += url + '\n'
     return errurls
+
+
+def unique_sort_ipv4(ips):
+    try:
+        ips = sorted(list(set(ips)),key=socket.inet_aton)
+    except:
+        ips = list(set(ips))    
+    return ips
 
 
 '''
