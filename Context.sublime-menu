@@ -19,12 +19,12 @@
                         "command": "select_ipv4_range"
                    },
                    {
-                        "caption": "Convert ipv4 to C",
-                        "command": "convert_ip2c"
-                   },
-                   {
                         "caption": "Convert C to ipv4",
                         "command": "convert_c2ip"
+                   },
+                   {
+                        "caption": "Convert ipv4 to C",
+                        "command": "convert_ip2c"
                    },
                    {
                         "caption": "Convert ipv4 to B",
