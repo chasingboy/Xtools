@@ -19,16 +19,16 @@
                         "command": "select_ipv4_range"
                    },
                    {
-                        "caption": "Convert C to ipv4",
-                        "command": "convert_c2ip"
+                        "caption": "Convert Range[C] to ipv4",
+                        "command": "convert_range_c2ip"
                    },
                    {
-                        "caption": "Convert ipv4 to C",
-                        "command": "convert_ip2c"
+                        "caption": "Convert ipv4 to Range[C]",
+                        "command": "convert_range_ip2c"
                    },
                    {
-                        "caption": "Convert ipv4 to B",
-                        "command": "convert_ip2b"
+                        "caption": "Convert ipv4 to Range[B]",
+                        "command": "convert_range_ip2b"
                    },
                    {
                         "caption": "Select domain (root)",
