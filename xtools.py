@@ -19,11 +19,15 @@ else:
     HOME = os.environ['HOME']
 
 '''
-如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件自定义系统用户名，并删除 # 注释。
+-> 如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件设置系统的 "<用户名>"
+-> 删除 # 注释
+Eg: 
+HOME = "C:\\Users\\" + u"中文"
 '''
-# HOME = "/Users/" + u"<用户名>"  # osx
-# HOME = "/home/" + u"<用户名>"  # linux
-# HOME = "C:\Users\" + u"<用户名>"  # windows
+
+#HOME = "/Users/" + u"<用户名>"    # osx
+#HOME = "/home/" + u"<用户名>"     # linux
+#HOME = "C:\\Users\\" + u"<用户名>"  # windows
 
 workdir = os.path.join(HOME,'.xtools')
 
@@ -69,8 +73,7 @@ class ConvertIp2cCommand(sublime_plugin.TextCommand):
 
 class ConvertC2ipCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        text = get_buffer_text(self.view)
-        text = convert_C_to_ipv4(text)
+        text = convert_C_to_ipv4(self.view)
         new_view(self.view, edit, text)
 
 
