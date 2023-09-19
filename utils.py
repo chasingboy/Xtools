@@ -144,7 +144,7 @@ def select_domain(view):
 
 def select_rootdomain(text):
     dms = text.split('.')
-    if len(text) == 2:
+    if len(dms) == 2:
         return text
     if dms[-2] in top_sufix and dms[-1] in country_sufix:
         root = "{0}.{1}.{2}".format(dms[-3],dms[-2],dms[-1])
