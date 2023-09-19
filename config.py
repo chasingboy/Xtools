@@ -338,7 +338,7 @@ filter_hosts = '''
 '''.strip('\n').split('\n')
 
 
-top_sufix = 'cc|aero|arpa|asia|biz|cat|com|coop|edu|gov|int|info|jobs|mil|mobi|museum|name|net|org|pro|tel|trave|xxx'
+top_sufix = 'cc|aero|arpa|asia|biz|cat|com|coop|edu|gov|int|info|jobs|mil|mobi|museum|name|net|org|pro|tel|trave|xxx|digital|run'
 
 #cn_sufix = 'ac.cn|ah.cn|bj.cn|com.cn|cq.cn|fj.cn|gd.cn|gov.cn|gs.cn|gx.cn|gz.cn|ha.cn|hb.cn|he.cn|hi.cn|hk.cn|hl.cn|hn.cn|jl.cn|js.cn|jx.cn|ln.cn|mo.cn|net.cn|nm.cn|nx.cn|org.cn|edu.cn|'
 
