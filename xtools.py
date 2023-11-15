@@ -196,11 +196,15 @@ class DeleteLinesCommand(sublime_plugin.TextCommand):
             sublime.message_dialog('[error] Please select input text and input finding strings')
             return
 
-        text = '\n'+buffers+'\n'
-        for line in buffers.split('\n'):
-            for ds in delstr:
-                if ds in line or ds == line:
-                    text = text.replace('\n'+line+'\n','\n')
+        text = ''
+            for line in buffers.split('\n'):
+                flag = False
+                for ds in delstr:
+                    if ds in line or ds == line:
+                        flag = True
+                        break
+                if flag == False:
+                    text += line + '\n'
         
         update_file(self.view, edit, text)
 
