@@ -155,6 +155,25 @@ workdir = os.path.join(HOME,'.xtools')
   ```
   https://github.com/chasingboy/Xtools/issues
   ```
+### 新版本 Sublime Text 无法正常使用
+在新版本的 Sublime Text（版本4166~4199）中，部分接口有变化导致 xtools 部分功能失效。可以通过修改 xtools.py 中的代码修复 Bug。
+```python
+# 修改 new_view 函数
+# 注释 new_view.insert(edit, 0, text.strip())
+# 使用 new_view.run_command('insert', {'characters': text.strip()})
+
+# 新版本
+def new_view(view, edit, text):
+    new_view = view.window().new_file()
+    new_view.set_scratch(True)
+    # 旧版本 Sublime Text
+    #new_view.insert(edit, 0, text.strip())
+    # 新版本 Sublime Text
+    new_view.run_command('insert', {'characters': text.strip()})
+    view.window().focus_view(new_view)
+```
+<img width="1562" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/2c255868-fa2c-4e57-a6f3-c61e9a9e8e3f">
+
 
 ### 特别感谢
 xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
@@ -167,4 +186,6 @@ linkfinder https://github.com/GerbenJavado/LinkFinder
 [+] 2023-07-18 增加一键排序去重、提取 javascript 文件路由。
 
 [+] 2023-08-28 增加提取 IP 段、转换 ipv4 支持 192.168.1.1-10 格式
+
+[+] 2023-12-15 修复新版本 Sublime Text 中部分功能 Bug。
 
