@@ -413,7 +413,10 @@ def panel_print(view, edit, text):
 def new_view(view, edit, text):
     new_view = view.window().new_file()
     new_view.set_scratch(True)
-    new_view.insert(edit, 0, text)
+    # 旧版本 Sublime Text
+    new_view.insert(edit, 0, text.strip())
+    # 新版本 Sublime Text
+    #new_view.run_command('insert', {'characters': text.strip()})
     view.window().focus_view(new_view)
 
 
