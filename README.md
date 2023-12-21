@@ -71,9 +71,14 @@ https://github.com/xinyu2428/HTML_TOOLS
                        eg: httpx -l target.txt
                        */
                     {
-                        "caption": "httpx",
+                        "caption": "httpx [GET]",
                         "command": "run_cmd",
-                        "args": {"cmd":"httpx -sc -title -l target.txt"}
+                        "args": {"cmd":"httpx -x GET -sc -title -l target.txt"}
+                    },
+{
+                        "caption": "httpx [POST]",
+                        "command": "run_cmd",
+                        "args": {"cmd":"httpx -x POST -sc -title -l target.txt"}
                     },
                     {
                         "caption": "nuclei",
