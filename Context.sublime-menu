@@ -19,6 +19,10 @@
                         "command": "select_ipv4_range"
                    },
                    {
+                        "caption": "-"
+
+                   },
+                   {
                         "caption": "Convert Range[C] to ipv4",
                         "command": "convert_range_c2ip"
                    },
@@ -29,6 +33,10 @@
                    {
                         "caption": "Convert ipv4 to Range[B]",
                         "command": "convert_range_ip2b"
+                   },
+                   {
+                        "caption": "-"
+
                    },
                    {
                         "caption": "Select domain (root)",
@@ -71,7 +79,7 @@
                 ]
             },
             {
-                "caption": "Text Edit",
+                "caption": "Text Editing",
                 "children": [
                     {
                         "caption": "Remove Special Chars",
@@ -93,12 +101,20 @@
                         "args": {"str":"(*)"}
                    },
                    {
+                        "caption": "-"
+
+                   },
+                   {
                         "caption": "Delete Lines (match input)",
                         "command": "delete_lines"
                    },
                    {
                         "caption": "Select Lines (match input)",
                         "command": "select_lines"
+                   },
+                   {
+                        "caption": "-"
+
                    },
                    {
                         "caption": "Replace Key To Value",
@@ -133,6 +149,26 @@
                         "caption": "Base64 Decode (line)",
                         "command": "base64_decode_line"
                    },
+                   {
+                        "caption": "-"
+
+                   },
+
+                   {
+                        "caption": "URL Encode (text)",
+                        "command": "url_encode_decode_text",
+                        "args": {"cmd":"encode"}
+                   },
+                   {
+                        "caption": "URL Decode (text)",
+                        "command": "url_encode_decode_text",
+                        "args": {"cmd":"decode"}
+                   },
+                   {
+                        "caption": "-"
+
+                   },
+
                    {
                         "caption": "Md5 Hash (text)",
                         "command": "md5_encrypt_text"
@@ -173,10 +209,49 @@
 
                 ]
             },
-            
             {
-                "caption": "Setting Config",
-                "command": "setting_config"
+                "caption": "Format Tools Result",
+                "children": [
+                    {
+                        "caption": "nmap (xml->host:port)",
+                        "command": "format_tools_result",
+                        "args": {"tool": "nmap"}
+                    },
+                ]
+            },
+            {
+                "caption": "Pentest Help Module",
+                "children": [
+                    {
+                        "caption": "File Upload Package",
+                        "command": "pentest_help_module",
+                        "args": {"tool": "upload"}
+                    },
+                    {
+                        "caption": "Reverse Shell Tools",
+                        "children": [
+                            {
+                                "caption": "Shell (bash, /bin/bash)",
+                                "command": "reverse_shell_tools",
+                                "args": {"shell": "bash"}
+                            },
+                            {
+                                "caption": "Shell (sh, /bin/bash)",
+                                "command": "reverse_shell_tools",
+                                "args": {"shell": "sh"}
+                            },
+                            {
+                                "caption": "Shell (nc, python, php)",
+                                "command": "reverse_shell_tools",
+                                "args": {"shell": "other"}
+                            },
+                        ]
+                    },
+                ]
+            },           
+            {
+                "caption": "Setting Xtools Config",
+                "command": "setting_xtools_config"
             },
             {
 
