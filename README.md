@@ -194,3 +194,7 @@ linkfinder https://github.com/GerbenJavado/LinkFinder
 
 [+] 2023-12-15 修复新版本 Sublime Text 中部分功能 Bug。
 
+[+] 2024-01-02 增加 URL编码解码、nmap 扫描结果转换、反弹shell命令生成
+
+[+] 2024-01-02 增加中文版配置文件
+
