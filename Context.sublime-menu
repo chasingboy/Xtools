@@ -248,7 +248,11 @@
                         ]
                     },
                 ]
-            },           
+            }, 
+            {
+                "caption": "Xtools Notebook",
+                "command": "xtools_note_book"
+            }, 
             {
                 "caption": "Setting Xtools Config",
                 "command": "setting_xtools_config"
