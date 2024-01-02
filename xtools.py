@@ -304,6 +304,16 @@ class Base64DecodeLineCommand(sublime_plugin.TextCommand):
         panel_print(self.view, edit, lines)
 
 
+class UrlEncodeDecodeTextCommand(sublime_plugin.TextCommand):
+    def run(self, edit, cmd):
+        text = get_buffer_text(self.view).replace('\r\n','\n').replace('\r','\n')
+        if cmd == 'encode':
+            text = quote(text)
+        if cmd == 'decode':
+            text = unquote(text)
+        panel_print(self.view, edit, text.replace('%0A','\n'))
+
+
 class Md5EncryptTextCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = get_buffer_text(self.view).strip('\n')   
@@ -362,6 +372,44 @@ class CurlDownloadFileCommand(sublime_plugin.TextCommand):
             panel_print(self.view, edit, '[!] $HOME/Desktop/work folder not exists!')
 
 
+# Format tools result
+class FormatToolsResultCommand(sublime_plugin.TextCommand):
+    def run(self, edit, tool):
+        text = get_buffer_text(self.view)   
+        global workdir
+        if tool == 'nmap':
+            file = write_file(workdir,text)
+            text = format_nmap_open_port(file)
+
+        if len(text) > 0:
+            new_view(self.view, edit, text)
+
+
+# Pentest help module
+class PentestHelpModuleCommand(sublime_plugin.TextCommand):
+    def run(self, edit, tool):
+        if tool == 'upload':
+            global file_upload_package
+            text = file_upload_package
+
+        new_view(self.view, edit, text, 'Markdown.sublime-syntax')
+
+
+# Reserve shell tool
+class ReverseShellToolsCommand(sublime_plugin.TextCommand):
+    def run(self, edit, shell):
+        ip_port = get_buffer_text(self.view)
+        if shell == 'bash':
+            text = reverse_shell_tools('bash',ip_port)
+        if shell == 'sh':
+            text = reverse_shell_tools('sh',ip_port)
+        if shell == 'other':
+            text =   reverse_shell_tools('other',ip_port)
+
+        if len(text) > 0:
+            new_view(self.view, edit, text, 'Bash.sublime-syntax')
+
+
 # Input text
 class InputTextCommand(sublime_plugin.TextCommand):
     def run(self, edit):
@@ -369,7 +417,7 @@ class InputTextCommand(sublime_plugin.TextCommand):
 
 
 # Setting config
-class SettingConfigCommand(sublime_plugin.TextCommand):
+class SettingXtoolsConfigCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         config_file = os.path.join(sublime.packages_path(),"Xtools","Context.sublime-menu")
         self.view.window().open_file(config_file)
@@ -410,8 +458,8 @@ def panel_print(view, edit, text):
     panel.replace(edit, sublime.Region(0, panel.size()), text)
 
 
-def new_view(view, edit, text):
-    new_view = view.window().new_file()
+def new_view(view, edit, text, syntax=''):
+    new_view = view.window().new_file(syntax=syntax)
     new_view.set_scratch(True)
     # 旧版本 Sublime Text
     new_view.insert(edit, 0, text.strip())
