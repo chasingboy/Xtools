@@ -179,6 +179,10 @@ def new_view(view, edit, text):
 ```
 <img width="1562" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/2c255868-fa2c-4e57-a6f3-c61e9a9e8e3f">
 
+### Xtools 中文版设置
+在 Xtools 目录下，删除原有 `Context.sublime-menu` 文件，然后把文件 `中文版-Context.sublime-menu` 重命名为 `Context.sublime-menu` 即可。
+<img width="1749" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/62fdb335-21fb-46f8-b659-e3144974db59">
+
 
 ### 特别感谢
 xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
