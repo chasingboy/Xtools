@@ -21,7 +21,7 @@ https://github.com/xinyu2428/HTML_TOOLS
 1. IP、domain、url 处理
    * 提取 IPv4 (内网、外网、IP段)
    * IPv4 和 C 段互转
-   * 提取 domain（根域名、所有域名）
+   * 提取 domain（根域名、根域名|子域名）
    * 提取 url（有路径、无路径）
    * 提取 router（js、text）
    * 过滤 CDN 和 DNS 域名和IP（需补充域名和IP）
@@ -32,11 +32,17 @@ https://github.com/xinyu2428/HTML_TOOLS
    * 替换指定字典的 key 和 value
 3. 简单编码和解码
    * base64 编码和解码
+   * url 编码和解码
    * md5 加密
 4. 调用系统命令执行
    * curl 下载文件
    * sqlmap
    * ......（自行配置）
+5. 整理工具扫描结果
+   * 转换 nmap|masscan xml结果为 host:port 格式
+6. 渗透测试辅助模块
+   * 返回文件上传数据包，方便测试文件上传接口
+   * 提供反弹 shell 命令生成
   
 ### 使用截图
 1. 在文本中提取 IP。
