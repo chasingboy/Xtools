@@ -219,7 +219,10 @@
                     },
                 ]
             },           
-            
+            {
+                "caption": "Xtools 记事本",
+                "command": "xtools_note_book"
+            }, 
             {
                 "caption": "Xtools 配置",
                 "command": "setting_xtools_config"
