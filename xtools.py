@@ -422,7 +422,11 @@ class SettingXtoolsConfigCommand(sublime_plugin.TextCommand):
         config_file = os.path.join(sublime.packages_path(),"Xtools","Context.sublime-menu")
         self.view.window().open_file(config_file)
         
-
+# Notebook
+class XtoolsNoteBookCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        notebook = os.path.join(sublime.packages_path(),"Xtools","Notebook.md")
+        self.view.window().open_file(notebook)
 
 # Function lib
 
