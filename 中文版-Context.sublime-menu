@@ -1,0 +1,234 @@
+[
+    {
+        "id": "xtools",
+        "caption": "Xtools",
+        "children": [
+            {
+                "caption": "IP和域名模块",
+                "children": [
+                    {
+                        "caption": "提取 IPv4 (内网)",
+                        "command": "select_ipv4_lan"
+                   },
+                   {
+                        "caption": "提取 IPv4 (外网)",
+                        "command": "select_ipv4_wan"
+                   },
+                   {
+                        "caption": "提取 IPv4 (段)",
+                        "command": "select_ipv4_range"
+                   },
+                   {
+                        "caption": "转换C段为IPv4",
+                        "command": "convert_range_c2ip"
+                   },
+                   {
+                        "caption": "转换IPv4为C段",
+                        "command": "convert_range_ip2c"
+                   },
+                   {
+                        "caption": "转换C段为IPv4",
+                        "command": "convert_range_ip2b"
+                   },
+                   {
+                        "caption": "提取域名 (根域名)",
+                        "command": "select_domain_root"
+                   },
+                   {
+                        "caption": "提取域名 (根|子域名)",
+                        "command": "select_domain_all"
+                   },
+                   {
+                        "caption": "过滤IPv4 (DNS,CDN)",
+                        "command": "filter_dns_cdn_host"
+                   },
+                   {
+                        "caption": "过滤域名 (DNS,CDN)",
+                        "command": "filter_dns_cdn_domain"
+                   },
+                ]
+            },
+            {
+                "caption": "URL和路由模块",
+                "children": [
+                    {
+                        "caption": "提取URL (不包含路径)",
+                        "command": "select_urls_exclude_path"
+                   },
+                   {
+                        "caption": "提取URL (包含路径)",
+                        "command": "select_urls_include_path"
+                   },
+                   {
+                        "caption": "提取路径|路由",
+                        "command": "select_routers_from_text"
+
+                   },
+                ]
+            },
+            {
+                "caption": "文本提取|替换|删除",
+                "children": [
+                    {
+                        "caption": "删除特殊字符",
+                        "command": "remove_special_chars"
+                   },
+                   {
+                        "caption": "删除空格",
+                        "command": "remove_specific_string",
+                        "args": {"str":"space"}
+                   },
+                   {
+                        "caption": "删除[]内的信息",
+                        "command": "remove_specific_string",
+                        "args": {"str":"[*]"}
+                   },
+                   {
+                        "caption": "删除()内的信息",
+                        "command": "remove_specific_string",
+                        "args": {"str":"(*)"}
+                   },
+                   {
+                        "caption": "删除匹配的行",
+                        "command": "delete_lines"
+                   },
+                   {
+                        "caption": "提取匹配的行",
+                        "command": "select_lines"
+                   },
+                   {
+                        "caption": "替换Key为Value",
+                        "command": "replace_key_to_value"
+                   },
+                   {
+                        "caption": "替换Value为Key",
+                        "command": "replace_value_to_key"
+                   },
+                   {
+                        "caption": "去重并排序",
+                        "command": "sort_and_unique_text"
+                   },
+                ]
+            },
+            {
+                "caption": "文本编码|解码",
+                "children": [
+                    {
+                        "caption": "Base64编码（全部）",
+                        "command": "base64_encode_text"
+                   },
+                   {
+                        "caption": "Base64解码（全部）",
+                        "command": "base64_decode_text"
+                   },
+                   {
+                        "caption": "Base64编码（按行）",
+                        "command": "base64_encode_line"
+                   },
+                   {
+                        "caption": "Base64解码（按行）",
+                        "command": "base64_decode_line"
+                   },
+                   {
+                        "caption": "URL 编码",
+                        "command": "url_encode_decode_text",
+                        "args": {"cmd":"encode"}
+                   },
+                   {
+                        "caption": "URL 解码",
+                        "command": "url_encode_decode_text",
+                        "args": {"cmd":"decode"}
+                   },
+                   {
+                        "caption": "Md5加密（全部）",
+                        "command": "md5_encrypt_text"
+                    },
+                    {
+                        "caption": "Md5加密（按行）",
+                        "command": "md5_encrypt_line"
+                    },
+                ]
+            },
+            {
+                "caption": "命令运行模块",
+                "children": [
+                    {
+                        "caption": "curl (Download File)",
+                        "command": "curl_download_file"
+                    },
+                    /* 通过 <args->cmd> 设置命令, 设置目标为 target.txt, 运行时自动替换为临时文件
+                       eg: httpx -l target.txt
+                       */
+                    {
+                        "caption": "httpx",
+                        "command": "run_cmd",
+                        "args": {"cmd":"httpx -sc -title -l target.txt"}
+                    },
+                    {
+                        "caption": "nuclei",
+                        "command": "run_cmd",
+                        "args": {"cmd":"nuclei -l target.txt"}
+                    },
+                    {
+                        "caption": "sqlmap",
+                        "command": "run_cmd",
+                        "args": {"cmd":"sqlmap -r target.txt"}
+                    },
+
+                    /* -- END -- */
+
+                ]
+            },
+            {
+                "caption": "整理工具结果",
+                "children": [
+                    {
+                        "caption": "nmap (xml->host:port)",
+                        "command": "format_tools_result",
+                        "args": {"tool": "nmap"}
+                    },
+                ]
+            },
+            {
+                "caption": "渗透测试辅助模块",
+                "children": [
+                    {
+                        "caption": "文件上传请求包",
+                        "command": "pentest_help_module",
+                        "args": {"tool": "upload"}
+                    },
+                    {
+                        "caption": "生成反弹shell命令",
+                        "children": [
+                            {
+                                "caption": "Shell (bash, /bin/bash)",
+                                "command": "reverse_shell_tools",
+                                "args": {"shell": "bash"}
+                            },
+                            {
+                                "caption": "Shell (sh, /bin/bash)",
+                                "command": "reverse_shell_tools",
+                                "args": {"shell": "sh"}
+                            },
+                            {
+                                "caption": "Shell (nc, python, php)",
+                                "command": "reverse_shell_tools",
+                                "args": {"shell": "other"}
+                            },
+                        ]
+                    },
+                ]
+            },           
+            
+            {
+                "caption": "Xtools 配置",
+                "command": "setting_xtools_config"
+            },
+            {
+
+                "caption": "输入文本",
+                "command": "input_text"
+            },
+        ]
+    }
+]
