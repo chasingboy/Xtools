@@ -132,11 +132,11 @@ https://github.com/xinyu2428/HTML_TOOLS
 ### 安装
 下载源码，github 下载后文件名 Xtools-main.zip，解压后需重命名为 Xtools，否则可能某些路径出错。
 
-进入到 Sublime Text 插件目录：Preferences->Browse Packpages，把 Xtools 放在该目录下，同时解压 applescript 文件即可。
+进入到 Sublime Text 插件目录：Preferences->Browse Packpages，把 Xtools 放在该目录下即可。
 
 <img width="1730" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/6d4a5c50-1079-4534-8acf-9aec8213dc23"><br/>
 
-注意：python 调用 masOS 终端需要 applescript 模块，需在 Xtools 目录下解压 applescript.zip
+注意：python 调用 masOS 终端需要 applescript 模块，请勿删除
 
 #### 安装报错
 最近有师傅反馈，window 11 安装时出现错误，功能无法正常使用。经过调试，发现是师傅的系统**用户名是中文**。如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件自定义系统用户名。
@@ -206,5 +206,7 @@ linkfinder https://github.com/GerbenJavado/LinkFinder
 
 [+] 2024-01-02 增加 URL编码解码、nmap 扫描结果转换、反弹shell命令生成
 
-[+] 2024-01-02 增加中文版配置文件
+[+] 2024-01-02 增加中文版配置文件、临时记事本
+
+[+] 2024-01-03 修改 applescript 模块为解压状态，不需要手动解压
 
