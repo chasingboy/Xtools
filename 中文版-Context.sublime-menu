@@ -32,11 +32,13 @@
                    },
                    {
                         "caption": "提取域名 (根域名)",
-                        "command": "select_domain_root"
+                        "command": "select_domain_root_all",
+                        "args": {"cmd": "root"}
                    },
                    {
                         "caption": "提取域名 (根|子域名)",
-                        "command": "select_domain_all"
+                        "command": "select_domain_root_all",
+                        "args": {"cmd": "all"}
                    },
                    {
                         "caption": "过滤IPv4 (DNS,CDN)",
