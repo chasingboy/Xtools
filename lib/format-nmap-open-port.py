@@ -3,14 +3,7 @@
 
 import sys
 
-try:
-    from bs4 import BeautifulSoup
-except:
-    print('[ERR] could not import bs4, please install bs4 [python3 -m pip install bs4]')
-    exit()
-
 waf_hosts = ['\n\n# WAF host:']
-
 
 def format_nmap_ports_from_xml(xml):
     results = ''
@@ -40,6 +33,12 @@ if __name__ == '__main__':
     filename = sys.argv[1]
 
     try:
+        from bs4 import BeautifulSoup
+    except:
+        with open(filename,'w') as fw: fw.write(f'[ERR] could not import bs4, please install bs4 [python3 -m pip install bs4]')
+        exit()
+
+    try:
         with open(filename) as fr: xml = fr.read()
         xml = BeautifulSoup(xml,'xml')
     except:
@@ -54,4 +53,3 @@ if __name__ == '__main__':
         with open(filename,'w') as fw: fw.write(results)
     except:
         with open(filename,'w') as fw: fw.write('[ERR] script running failed!')
-
