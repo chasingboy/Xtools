@@ -375,7 +375,7 @@ Formating some tool's resulte
 '''
 
 def format_nmap_open_port(file):
-    script_path = os.path.join(sublime.packages_path(),"Xtools-Pro/lib/format-nmap-open-port.py")
+    script_path = os.path.join(sublime.packages_path(),"Xtools/lib/format-nmap-open-port.py")
     cmd = 'python3 "{script}" {file}'.format(script=script_path,file=file)
     os.system(cmd)
     text = read_file(file)
