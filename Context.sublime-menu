@@ -40,11 +40,13 @@
                    },
                    {
                         "caption": "Select domain (root)",
-                        "command": "select_domain_root"
+                        "command": "select_domain_root_all",
+                        "args": {"cmd": "root"}
                    },
                    {
                         "caption": "Select domain (all)",
-                        "command": "select_domain_all"
+                        "command": "select_domain_root_all",
+                        "args": {"cmd": "all"}
                    },
                    {
                         "caption": "Filter ip (DNS,CDN)",
