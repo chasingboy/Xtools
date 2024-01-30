@@ -82,19 +82,24 @@ class ConvertRangeIp2bCommand(sublime_plugin.TextCommand):
         new_view(self.view, edit, text)
 
 
-class SelectDomainRootCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
+class SelectDomainRootAllCommand(sublime_plugin.TextCommand):
+    def remove(self,edit):
+        exts = ['.html','.login','.action','.htm']
+        text = get_buffer_text(self.view)
+        _text = text
+        for ext in exts:
+            _text = _text.lower().replace(ext,'#####')
+        update_file(self.view, edit, _text)
+
+        return text
+
+    def run(self, edit, cmd):
+        text = self.remove(edit)
         domains,rootdomains = select_domain(self.view)
-        text = '\n'.join(rootdomains)
+        update_file(self.view, edit, text)
+
+        text = '\n'.join(rootdomains) if cmd == 'root' else '\n'.join(domains)
         new_view(self.view, edit, text)
-
-
-class SelectDomainAllCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
-        domains,rootdomains = select_domain(self.view)
-        text = '\n'.join(domains)
-        new_view(self.view, edit, text)
-
 
 class FilterDnsCdnHostCommand(sublime_plugin.TextCommand):
     def run(self, edit):
