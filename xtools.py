@@ -241,8 +241,8 @@ class ReplaceKeyToValueCommand(sublime_plugin.TextCommand):
 
         for line in mapstr:
             if '=>' in line:
-                key = line.split('=>')[0]
-                value = line.split('=>')[1]
+                key, value = line.split('=>')
+                if key == '': continue
                 text = text.replace(key,value)
         
         new_view(self.view, edit, text)
@@ -258,9 +258,11 @@ class ReplaceValueToKeyCommand(sublime_plugin.TextCommand):
 
         for line in mapstr:
             if '=>' in line:
-                key = line.split('=>')[0]
-                values = line.split('=>')[1].split(',')
+                key,values = line.split('=>')
+                values = values.split(',')
+                
                 for value in values:
+                    if value == '': continue
                     text = text.replace(value,key)
         
         new_view(self.view, edit, text)
