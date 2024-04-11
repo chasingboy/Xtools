@@ -1,4 +1,11 @@
-# Xtools
+<h1 align="center">Xtools</h1>
+<h3 align="center">Xtools 是一款 Sublime Text 插件、同时是一款简单的资产处理、命令行调用工具</h3>
+
+<!-- BEGIN VISITOR COUNTER -->
+<a href="https://github.com/chasingboy/Xtools" target="_blank">
+<img src="https://visitor-badge.laobi.icu/badge?page_id=chasingboy.Xtools" alt="visitor badge"/>
+</a>
+<!-- END VISITOR COUNTER -->
 
 <img width="975" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/f20db515-4e9e-4c4d-aec9-ed4a310a0f34">
 
