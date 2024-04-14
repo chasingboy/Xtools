@@ -459,23 +459,24 @@ def get_console_text(view):
 
 
 def panel_print(view, edit, text):
+    new_view(view, edit, text)
+    ''' old version
     if view.window().find_output_panel('exec') == None:
         panel = view.window().create_output_panel('exec')
     else:
         panel = view.window().find_output_panel('exec')
-    
-    #panel.run_command('insert', {'characters': text})
+        
     view.window().run_command('show_panel', {'panel': 'output.exec'})
-    panel.replace(edit, sublime.Region(0, panel.size()), text)
+    panel.replace(edit, sublime.Region(0, panel.size()), text)'''
 
 
 def new_view(view, edit, text, syntax=''):
     new_view = view.window().new_file(syntax=syntax)
     new_view.set_scratch(True)
     # 旧版本 Sublime Text
-    new_view.insert(edit, 0, text.strip())
+    # new_view.insert(edit, 0, text.strip())
     # 新版本 Sublime Text
-    #new_view.run_command('insert', {'characters': text.strip()})
+    new_view.run_command('insert', {'characters': text.strip()})
     view.window().focus_view(new_view)
 
 
