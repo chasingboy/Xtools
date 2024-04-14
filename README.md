@@ -211,3 +211,5 @@ linkfinder https://github.com/GerbenJavado/LinkFinder
 
 [+] 2024-01-03 修改 applescript 模块为解压状态，不需要手动解压
 
+[+] 2024-04-14 把panel显示转为新文件显示，适应新版本 Sublime Text
+
