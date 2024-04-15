@@ -179,11 +179,13 @@ def new_view(view, edit, text):
     new_view = view.window().new_file()
     new_view.set_scratch(True)
     # 旧版本 Sublime Text
-    #new_view.insert(edit, 0, text.strip())
+    # new_view.insert(edit, 0, text.strip())
     # 新版本 Sublime Text
     new_view.run_command('insert', {'characters': text.strip()})
     view.window().focus_view(new_view)
 ```
+> `new_view.run_command('insert', {'characters': text.strip()})` 新旧版本都兼容，Xtools 最新版本默认启用
+
 <img width="1562" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/2c255868-fa2c-4e57-a6f3-c61e9a9e8e3f">
 
 ### Xtools 中文版设置
