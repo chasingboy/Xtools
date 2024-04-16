@@ -31,6 +31,7 @@ HOME = "C:\\Users\\" + u"中文"
 
 workdir = os.path.join(HOME,'.xtools')
 
+
 try:
     if os.path.exists(workdir):
         print('.xtools directory is exists')
@@ -40,6 +41,29 @@ try:
 except:
     sublime.message_dialog('[waring] .xtools directory is created failed')
 
+
+'''
+-> 版本信息
+'''
+
+VERSION = '2.1.1'
+
+ABOUT_XTOOLS = '''
+About Xtools
+
+Xtools 是一款 Sublime Text 插件、同时是一款简单的资产处理、命令行调用工具
+
+__   __ _                 _      
+\ \ / /| |               | |     
+ \ V / | |_  ___    ___  | | ___ 
+ /   \ | __|/ _ \  / _ \ | |/ __|
+/ /^\ \| |_| (_) || (_) || |\__ \
+\/   \/ \__|\___/  \___/ |_||___/
+
+
+参考文档 Github@https://github.com/chasingboy/Xtools
+当前版本 Version@{version}     [{tip}]
+'''
 
 
 # IP And Domain
@@ -429,11 +453,20 @@ class SettingXtoolsConfigCommand(sublime_plugin.TextCommand):
         config_file = os.path.join(sublime.packages_path(),"Xtools","Context.sublime-menu")
         self.view.window().open_file(config_file)
         
+
 # Notebook
 class XtoolsNoteBookCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         notebook = os.path.join(sublime.packages_path(),"Xtools","Notebook.md")
         self.view.window().open_file(notebook)
+
+
+# About Xtools
+class AboutXtoolsCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        tip = check_version(VERSION)
+        sublime.message_dialog(ABOUT_XTOOLS.format(version=VERSION,tip=tip))
+
 
 # Function lib
 
@@ -459,15 +492,10 @@ def get_console_text(view):
 
 
 def panel_print(view, edit, text):
-    new_view(view, edit, text)
-    ''' old version
-    if view.window().find_output_panel('exec') == None:
-        panel = view.window().create_output_panel('exec')
-    else:
-        panel = view.window().find_output_panel('exec')
-        
+    view.window().destroy_output_panel('exec')
+    panel = view.window().create_output_panel('exec')
     view.window().run_command('show_panel', {'panel': 'output.exec'})
-    panel.replace(edit, sublime.Region(0, panel.size()), text)'''
+    panel.run_command('insert', {'characters': text})
 
 
 def new_view(view, edit, text, syntax=''):
