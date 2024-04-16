@@ -220,6 +220,10 @@
                         ]
                     },
                 ]
+            },
+            {
+                "caption": "-"
+
             },           
             {
                 "caption": "Xtools 记事本",
@@ -233,6 +237,14 @@
 
                 "caption": "输入文本",
                 "command": "input_text"
+            },
+            {
+                "caption": "-"
+
+            },
+            {
+                "caption": "关于 Xtools",
+                "command": "about_xtools"
             },
         ]
     }
