@@ -8,8 +8,34 @@ from urllib.parse import urlparse, quote, unquote
 import ipaddress
 
 
+'''
+# base functions
+# global vars
+'''
+
 # Get system type
 platform = sublime.platform()
+
+try:
+    if platform == 'osx': from .applescript import tell
+except:
+    sublime.message_dialog('[waring] applescript 文件导入出错, 请检查')
+
+
+def check_version(current_version):
+    try:
+        from urllib.request import urlopen
+        readme = urlopen("https://raw.githubusercontent.com/chasingboy/Xtools/main/README.md",timeout=3).read()
+        version = re.findall(r'Version-V(.+)-green',readme.decode())[0]
+        
+        if current_version < version:
+            return '最新版本 @{v}, 请下载更新...'.format(v=version)
+    except:
+        return '版本信息获取失败,请github查看'
+
+    return '已是最新版'
+
+### --- END ---
 
 def convert_ipv4_to_C(view):
     rets = {}
@@ -174,11 +200,6 @@ def exec_command(cmd):
     if platform == 'windows':
         os.system('start cmd /k ' + cmd)
     elif platform == 'osx':
-        try:
-            from .applescript import tell
-        except:
-            sublime.message_dialog('[waring] macOS 请解压 applescript 文件')
-            return 0
         tell.app('Terminal','do script"{cmd}"'.format(cmd=cmd),background=True)
     
     elif platform == 'linux':
