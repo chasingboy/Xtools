@@ -13,6 +13,12 @@ import ipaddress
 # global vars
 '''
 
+# Xtools Root Path
+XTOOLS_ROOT = os.path.join(sublime.packages_path(),"Xtools")
+
+# syntax file
+SYNTAX_FILE = 'Xtools-Text.sublime-syntax'
+
 # Get system type
 platform = sublime.platform()
 
@@ -396,8 +402,59 @@ Formating some tool's resulte
 '''
 
 def format_nmap_open_port(file):
-    script_path = os.path.join(sublime.packages_path(),"Xtools/lib/format-nmap-open-port.py")
+    script_path = os.path.join(XTOOLS_ROOT,"lib/format-nmap-open-port.py")
     cmd = 'python3 "{script}" {file}'.format(script=script_path,file=file)
     os.system(cmd)
     text = read_file(file)
     return text
+
+
+def format_httpx_result(text):
+    texts, results = text.split('\n'), []
+    
+    for text in texts:
+        try:
+            assert (text.startswith('http://') or text.startswith('https://'))
+            url, code, end = text.split(' ',2)
+        except:
+            continue
+
+        results.append('{code} {url} {end}'.format(code=code, url=url, end=end))
+
+    if results == []:
+        sublime.message_dialog('[waring-httpx] The result format is not supported! Please read the docs')
+        return ''
+
+    results = '\n'.join(sorted(results))
+    return results
+
+
+def format_nuclei_result(text):
+    texts, results = text.split('\n'), []
+
+    results = {'info':[], 'low':[], 'medium': [], 'high': [], 'critical': []}
+    levels = ['info' ,'low', 'medium', 'high', 'critical']
+
+    for text in texts:
+        try:
+            poc, poctype, level, end = text.split(' ', 3)
+            key = level.replace('[','').replace(']','')
+            assert (key in levels)
+        except:
+            continue
+
+        results[key].append(
+            '{level} {poc} {poctype} {end}'.format(level=level, poc=poc, poctype=poctype, end=end)
+        )
+    
+    text = ''
+    for level in levels[::-1]:
+        if results.get(level) != []:
+            text += '\n'.join(results.get(level)) + '\n\n'
+
+    if text == '':
+        sublime.message_dialog('[waring-nuclei] The result format is not supported! Please read the docs')
+        return ''
+
+    return text
+
