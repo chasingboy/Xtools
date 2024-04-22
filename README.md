@@ -3,7 +3,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Plugin-Sublime_Text-blue?color=rgb(138%2C171%2C128)">
   <img src="https://img.shields.io/badge/Version-V2.1.1-green?style=flat">
-  <img src="https://img.shields.io/github/languages/top/chasingboy/Xtools?style=flat&color=blue">
   <img src="https://img.shields.io/github/last-commit/chasingboy/Xtools">
   <img src="https://img.shields.io/github/stars/chasingboy/Xtools?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/Xtools">
@@ -49,6 +48,8 @@ https://github.com/xinyu2428/HTML_TOOLS
    * ......（自行配置）
 5. 整理工具扫描结果
    * 转换 nmap|masscan xml结果为 host:port 格式
+   * 整理和分类 fscan 扫描结果
+   * 整理和高亮 httpx 和 nuclei 扫描结果
 6. 渗透测试辅助模块
    * 返回文件上传数据包，方便测试文件上传接口
    * 提供反弹 shell 命令生成
@@ -137,6 +138,24 @@ https://github.com/xinyu2428/HTML_TOOLS
 
 <img width="1846" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ecc36edb-c1d0-40d2-907c-7fd90bce36ac">
 
+### fscan 扫描结果整理
+按照 ip:port、web-poc、weak-password、web-info 等分类fscan的结果，且对部分结果进行颜色处理，方便浏览。
+
+<img width="1458" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/3c581ae2-bcc9-4e67-8fd4-63dda6645d13">
+
+web 相关信息按照状态码进行排序、指纹信息标红处理等。
+
+<img width="1469" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/02aca0de-9cb3-4b15-aaac-d92b3f70b9b7">
+
+
+### httpx｜nuclei 扫描结果整理
+httpx｜nuclie 工具的扫描结果保存在 txt 文件中，在二次查看时，总是白茫茫一遍，容易错过重点资产，因此对相关信息进行排序和高亮处理，提高浏览的舒适性。
+
+<img width="1454" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/02a9fb31-5f82-4029-9edc-9d8464ddc679">
+
+<img width="1465" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/e956e7e1-567e-458c-a877-3c4f7b9993d6">
+
+
 
 ### 安装
 下载源码，github 下载后文件名 Xtools-main.zip，解压后需重命名为 Xtools，否则可能某些路径出错。
@@ -202,9 +221,14 @@ def new_view(view, edit, text):
 
 
 ### 特别感谢
-xinyu2428 师傅 https://github.com/xinyu2428/HTML_TOOLS
+xinyu2428@ https://github.com/xinyu2428/HTML_TOOLS
 
-linkfinder https://github.com/GerbenJavado/LinkFinder
+linkfinder@ https://github.com/GerbenJavado/LinkFinder
+
+ZororoZ@ https://github.com/ZororoZ/fscanOutput/tree/main
+
+aaaaa_ascii@ https://blog.csdn.net/aaaaa_ascii/article/details/131956793
+
 
 ### 更新记录
 [+] 2023-07-15 增加 Windows 命令行调用支持。
