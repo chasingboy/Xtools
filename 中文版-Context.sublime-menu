@@ -189,6 +189,29 @@
                         "command": "format_tools_result",
                         "args": {"tool": "nmap"}
                     },
+                    {
+                        "caption": "fscan 结果分类|整理",
+                        "command": "classify_fscan_result",
+                    },
+                    {
+                        "caption": "-"
+
+                   },
+                    {
+                        "caption": "整理|高亮结果 (httpx)",
+                        "command": "highlight_httpx_nuclei",
+                        "args": {"tool": "httpx"}
+                    },
+                    {
+                        "caption": "整理|高亮结果 (nuclei)",
+                        "command": "highlight_httpx_nuclei",
+                        "args": {"tool": "nuclei"}
+                    },
+                    {
+                        "caption": "高亮文本",
+                        "command": "highlight_httpx_nuclei",
+                        "args": {"tool": "text"}
+                    },
                 ]
             },
             {
