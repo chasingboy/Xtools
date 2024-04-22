@@ -1,0 +1,82 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/syntax.html
+name: Xtools Text
+file_extensions:
+  - txt
+scope: source.python
+contexts:
+  main:
+    #- match: \b(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)((([\-](1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])|/(1\d|2\d|3[0-2]|[1-9]))(\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d))?)?)\b
+    #  scope: keyword.control.python
+
+    #- match: \b(https?://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|])\b
+    #  scope: keyword.control
+
+    - meta_scope: meta.group
+    - meta_content_scope: meta.content
+    - match: (\[)
+      scope: punctuation.begin
+      embed: embed
+      escape: (\])
+      escape_captures:
+        0: punctuation.end
+
+    # fscan
+    - match: (?i)(SSH|RDP|SMB|SMB2-shares):.+
+      scope: message.error
+
+    - match: (?i)(Mysql|Oracle|Mssql|Mongodb|Postgres):.+
+      scope: variable.function
+
+    - match: (?i)(redis|Mongodb|ftp|Memcached):.+
+      scope: constant.numeric
+
+
+  embed:
+    - match: (200|206)$
+      scope: string
+
+    - match: (301|302|305|307)$
+      scope: constant.character
+
+    - match: (400|401|402|403|404|406|416)$
+      scope: message.error
+
+    - match: (500|501|502|503)$
+      scope: constant.numeric
+
+    - match: (http|tcp|file|ssl)$
+      scope: keyword.control.import.python
+
+    - match: (info$)
+      scope: variable.function
+
+    - match: (?i)(low)
+      scope: string
+
+    - match: (?i)(medium)
+      scope: constant.numeric
+
+    - match: (?i)(high|critical)
+      scope: message.error
+
+    - match: (?i)(nginx|apache|tomcat|php|java|node|Tengine|Spring|HSTS|\ |,)
+      scope: string
+
+    - match: (?i)(Finger:\ Null)
+      scope: comment
+
+    - match: (?i)(Finger:.+)
+      scope: message.error
+
+    - match: ([\d])+$
+      scope: variable.function
+
+    - match: .*(400|401|402|403|404|406|416|500|501|502|503).*
+      scope: constant.numeric
+
+    - match: .+[\w\d\s\u4e00-\u9fa5\-].+
+      scope: punctuation.definition.annotation
+
+
