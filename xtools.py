@@ -6,6 +6,8 @@ from .utils import *
 import json,time
 import base64,hashlib
 
+from .lib.classify_fscan_result import classify_fscan_result
+
 
 """
 : Setting working directory
@@ -46,7 +48,7 @@ except:
 -> 版本信息
 '''
 
-VERSION = '2.1.1'
+VERSION = '3.1.1'
 
 ABOUT_XTOOLS = '''
 About Xtools
@@ -416,6 +418,38 @@ class FormatToolsResultCommand(sublime_plugin.TextCommand):
             new_view(self.view, edit, text)
 
 
+# Classify Fscan result
+class ClassifyFscanResultCommand(sublime_plugin.TextCommand):
+    def run(self,edit):
+        text = get_buffer_text(self.view)
+        results = classify_fscan_result(text)
+        
+        for key in results.keys():
+            syntax = SYNTAX_FILE if key in ['web-info.txt','weak-password.txt'] else ''
+            new_view(self.view, edit, results.get(key), syntax=syntax, filename=key)
+
+
+# highlight httpx nulcie result 
+class HighlightHttpxNucleiCommand(sublime_plugin.TextCommand):
+    def run(self, edit, tool):
+        text = get_buffer_text(self.view)
+
+        if tool == 'httpx':
+            text = format_httpx_result(text)
+        if tool == 'nuclei':
+            text = format_nuclei_result(text)
+        if tool == 'text':
+            self.view.assign_syntax(SYNTAX_FILE)
+            return None
+
+        if text == '':
+            return None
+
+        update_file(self.view, edit, text)
+        self.view.assign_syntax(SYNTAX_FILE) 
+
+
+
 # Pentest help module
 class PentestHelpModuleCommand(sublime_plugin.TextCommand):
     def run(self, edit, tool):
@@ -450,14 +484,14 @@ class InputTextCommand(sublime_plugin.TextCommand):
 # Setting config
 class SettingXtoolsConfigCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        config_file = os.path.join(sublime.packages_path(),"Xtools","Context.sublime-menu")
+        config_file = os.path.join(XTOOLS_ROOT,"Context.sublime-menu")
         self.view.window().open_file(config_file)
         
 
 # Notebook
 class XtoolsNoteBookCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        notebook = os.path.join(sublime.packages_path(),"Xtools","Notebook.md")
+        notebook = os.path.join(XTOOLS_ROOT,"Notebook.md")
         self.view.window().open_file(notebook)
 
 
@@ -471,9 +505,8 @@ class AboutXtoolsCommand(sublime_plugin.TextCommand):
 # Function lib
 
 def get_buffer_text(view):
-    site = Region(0, view.size())
-    text = view.substr(site)
-    return text
+    text = view.substr(Region(0, view.size()))
+    return text.strip() 
 
 
 def region_to_text(view,regions):
@@ -498,9 +531,10 @@ def panel_print(view, edit, text):
     panel.run_command('insert', {'characters': text})
 
 
-def new_view(view, edit, text, syntax=''):
+def new_view(view, edit, text, syntax='', filename=''):
     new_view = view.window().new_file(syntax=syntax)
     new_view.set_scratch(True)
+    new_view.set_name(filename)
     # 旧版本 Sublime Text
     # new_view.insert(edit, 0, text.strip())
     # 新版本 Sublime Text
@@ -509,4 +543,4 @@ def new_view(view, edit, text, syntax=''):
 
 
 def update_file(view, edit, text):
-    view.replace(edit, sublime.Region(0, view.size()), text)
+    view.replace(edit, sublime.Region(0, view.size()), text.strip())
