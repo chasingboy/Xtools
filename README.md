@@ -217,6 +217,7 @@ def new_view(view, edit, text):
 
 ### Xtools 中文版设置
 在 Xtools 目录下，删除原有 `Context.sublime-menu` 文件，然后把文件 `中文版-Context.sublime-menu` 重命名为 `Context.sublime-menu` 即可。
+
 <img width="1749" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/62fdb335-21fb-46f8-b659-e3144974db59">
 
 
