@@ -2,7 +2,7 @@
 <h3 align="center">Xtools 是一款 Sublime Text 插件、同时是一款简单的资产处理、命令行调用工具</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/Plugin-Sublime_Text-blue?color=rgb(138%2C171%2C128)">
-  <img src="https://img.shields.io/badge/Version-V2.1.1-green?style=flat">
+  <img src="https://img.shields.io/badge/Version-V3.1.1-green?style=flat">
   <img src="https://img.shields.io/github/last-commit/chasingboy/Xtools">
   <img src="https://img.shields.io/github/stars/chasingboy/Xtools?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/Xtools">
@@ -143,7 +143,7 @@ https://github.com/xinyu2428/HTML_TOOLS
 
 <img width="1458" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/3c581ae2-bcc9-4e67-8fd4-63dda6645d13">
 
-web 相关信息按照状态码进行排序、指纹信息标红处理等。
+web 相关信息按照状态码进行排序、指纹信息标红处理、弱口令分类处理等。
 
 <img width="1469" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/02aca0de-9cb3-4b15-aaac-d92b3f70b9b7">
 
@@ -246,4 +246,6 @@ aaaaa_ascii@ https://blog.csdn.net/aaaaa_ascii/article/details/131956793
 [+] 2024-01-03 修改 applescript 模块为解压状态，不需要手动解压
 
 [+] 2024-04-14 把panel显示转为新文件显示，适应新版本 Sublime Text
+
+[+] 2024-04-22 增加 fscan｜httpx｜nuclei 结果整理功能
 
