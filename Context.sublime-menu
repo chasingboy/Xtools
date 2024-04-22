@@ -219,6 +219,29 @@
                         "command": "format_tools_result",
                         "args": {"tool": "nmap"}
                     },
+                    {
+                        "caption": "fscan (classify result)",
+                        "command": "classify_fscan_result",
+                    },
+                    {
+                        "caption": "-"
+
+                   },
+                    {
+                        "caption": "Highlight Text (httpx)",
+                        "command": "highlight_httpx_nuclei",
+                        "args": {"tool": "httpx"}
+                    },
+                    {
+                        "caption": "Highlight Text (nuclei)",
+                        "command": "highlight_httpx_nuclei",
+                        "args": {"tool": "nuclei"}
+                    },
+                    {
+                        "caption": "Highlight Text",
+                        "command": "highlight_httpx_nuclei",
+                        "args": {"tool": "text"}
+                    },
                 ]
             },
             {
