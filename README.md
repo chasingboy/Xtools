@@ -139,7 +139,7 @@ https://github.com/xinyu2428/HTML_TOOLS
 <img width="1846" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/ecc36edb-c1d0-40d2-907c-7fd90bce36ac">
 
 ### fscan 扫描结果整理
-按照 ip:port、web-poc、weak-password、web-info 等分类fscan的结果，且对部分结果进行颜色处理，方便浏览。
+按照 ip:port、web-poc、weak-password、web-info 等分类 fscan 的结果，且对部分结果进行颜色处理，方便浏览。
 
 <img width="1458" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/3c581ae2-bcc9-4e67-8fd4-63dda6645d13">
 
@@ -149,7 +149,7 @@ web 相关信息按照状态码进行排序、指纹信息标红处理、弱口�
 
 
 ### httpx｜nuclei 扫描结果整理
-httpx｜nuclie 工具的扫描结果保存在 txt 文件中，在二次查看时，总是白茫茫一遍，容易错过重点资产，因此对相关信息进行排序和高亮处理，提高浏览的舒适性。
+httpx｜nuclei 工具的扫描结果保存在 txt 文件中，在二次查看时，总是白茫茫一遍，容易错过重点资产，因此对相关信息进行排序和高亮处理，提高浏览的舒适性。
 
 <img width="1454" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/02a9fb31-5f82-4029-9edc-9d8464ddc679">
 
