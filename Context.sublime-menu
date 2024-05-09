@@ -81,7 +81,7 @@
                 ]
             },
             {
-                "caption": "Text Editing",
+                "caption": "Text Editing | Finding",
                 "children": [
                     {
                         "caption": "Remove Special Chars",
