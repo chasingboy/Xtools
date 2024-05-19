@@ -251,6 +251,35 @@ def unique_sort_ipv4(ips):
     return ips
 
 
+def add_prefix_suffix(text,chars,cmd):
+    '''
+    : cmd: prefix, suffix, prefix-line, suffix-line
+
+    '''
+    lines, text = text.split('\n'), ''
+
+    def concat(lines,chars,text):
+        chars = chars.split('\n')
+        if len(chars) != len(lines):
+            sublime.message_dialog('[waring]  The number of text lines is not same')
+            return None
+
+        for x,line in enumerate(lines):
+            line = (chars[x] + line) if cmd == 'prefix-line' else (line+chars[x])
+            text = text + line + '\n'
+        
+        return text
+
+    if 'line' in cmd:
+        return concat(lines,chars,text)
+
+    for line in lines:
+        line = (chars+line) if cmd == 'prefix' else (line+chars)
+        text = text +  line + '\n'
+    
+    return text
+
+
 '''
 Select Routers
 : urls,sort,filter
@@ -402,10 +431,37 @@ Formating some tool's resulte
 '''
 
 def format_nmap_open_port(file):
-    script_path = os.path.join(XTOOLS_ROOT,"lib/format-nmap-open-port.py")
-    cmd = 'python3 "{script}" {file}'.format(script=script_path,file=file)
-    os.system(cmd)
-    text = read_file(file)
+    try:
+        import xml.etree.ElementTree
+    except:
+        sublime.message_dialog('[ERR] could not import xml.etree.ElementTree, please check and install')
+
+    root = xml.etree.ElementTree.parse(file).getroot()
+    text, wafhosts = [], ['\n\n# WAF host:']
+
+    for host in root.findall('host'):
+        address, ports = host.find('address').get('addr'), host.find('ports').findall('port')
+
+        if len(ports) > 100:
+            wafhosts.append(address)
+            continue
+        
+        for port in ports:
+            port, state = port.get('portid'), port.find('state').get('state')
+            if state != 'open':
+                continue
+            try:
+                service = port.find('service').get('name')
+            except:
+                service = 'unknow'
+            
+            text.append(address + ':' + port)
+
+    text = '\n'.join(list(set(text)))
+    
+    if len(wafhosts) > 1:
+        text += '\n'.join(wafhosts)
+    
     return text
 
 
