@@ -107,12 +107,36 @@
 
                    },
                    {
+                        "caption": "Select Lines (match input)",
+                        "command": "select_lines"
+                   },
+                   {
                         "caption": "Delete Lines (match input)",
                         "command": "delete_lines"
                    },
                    {
-                        "caption": "Select Lines (match input)",
-                        "command": "select_lines"
+                        "caption": "-"
+
+                   },
+                   {
+                        "caption": "Add Prefix (one->line)",
+                        "command": "add_prefix_suffix",
+                        "args": {"cmd":"prefix"}
+                   },
+                   {
+                        "caption": "Add Prefix (line->line)",
+                        "command": "add_prefix_suffix",
+                        "args": {"cmd":"prefix-line"}
+                   },
+                   {
+                        "caption": "Add Suffix (one->line)",
+                        "command": "add_prefix_suffix",
+                        "args": {"cmd":"suffix"}
+                   },
+                   {
+                        "caption": "Add Suffix (line->line)",
+                        "command": "add_prefix_suffix",
+                        "args": {"cmd":"suffix-line"}
                    },
                    {
                         "caption": "-"
