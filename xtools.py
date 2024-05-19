@@ -13,7 +13,7 @@ from .lib.classify_fscan_result import classify_fscan_result
 : Setting working directory
 : HOME = '/Users/xxx/'
 : workdir = '$HOME/.xtools'
-"""  
+"""
 
 if platform == 'windows':
     HOME = os.environ['HOMEPATH']
@@ -255,6 +255,16 @@ class SelectLinesCommand(sublime_plugin.TextCommand):
                     text += line + '\n'
         
         new_view(self.view, edit, text)
+
+
+class AddPrefixSuffixCommand(sublime_plugin.TextCommand):
+    def run(self, edit, cmd):
+        text = get_buffer_text(self.view)
+        chars = get_console_text(self.view)
+        text = add_prefix_suffix(text,chars,cmd)
+        
+        if text is not None:
+            update_file(self.view, edit, text)
 
 
 class ReplaceKeyToValueCommand(sublime_plugin.TextCommand):
