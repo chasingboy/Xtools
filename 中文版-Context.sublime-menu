@@ -19,6 +19,10 @@
                         "command": "select_ipv4_range"
                    },
                    {
+                        "caption": "-"
+
+                   },
+                   {
                         "caption": "转换C段为IPv4",
                         "command": "convert_range_c2ip"
                    },
@@ -31,6 +35,10 @@
                         "command": "convert_range_ip2b"
                    },
                    {
+                        "caption": "-"
+
+                   },
+                   {
                         "caption": "提取域名 (根域名)",
                         "command": "select_domain_root_all",
                         "args": {"cmd": "root"}
@@ -39,6 +47,10 @@
                         "caption": "提取域名 (根|子域名)",
                         "command": "select_domain_root_all",
                         "args": {"cmd": "all"}
+                   },
+                   {
+                        "caption": "-"
+
                    },
                    {
                         "caption": "过滤IPv4 (DNS,CDN)",
@@ -81,12 +93,12 @@
                         "args": {"str":"space"}
                    },
                    {
-                        "caption": "删除[]内的信息",
+                        "caption": "删除 [] 内的信息",
                         "command": "remove_specific_string",
                         "args": {"str":"[*]"}
                    },
                    {
-                        "caption": "删除()内的信息",
+                        "caption": "删除 () 内的信息",
                         "command": "remove_specific_string",
                         "args": {"str":"(*)"}
                    },
@@ -97,6 +109,34 @@
                    {
                         "caption": "提取匹配的行",
                         "command": "select_lines"
+                   },
+                   {
+                        "caption": "-"
+
+                   },
+                   {
+                        "caption": "添加前缀 (一行对多行)",
+                        "command": "add_prefix_suffix",
+                        "args": {"cmd":"prefix"}
+                   },
+                   {
+                        "caption": "添加前缀 (多行对多行)",
+                        "command": "add_prefix_suffix",
+                        "args": {"cmd":"prefix-line"}
+                   },
+                   {
+                        "caption": "添加后缀 (一行对多行)",
+                        "command": "add_prefix_suffix",
+                        "args": {"cmd":"suffix"}
+                   },
+                   {
+                        "caption": "添加后缀 (多行对多行)",
+                        "command": "add_prefix_suffix",
+                        "args": {"cmd":"suffix-line"}
+                   },
+                   {
+                        "caption": "-"
+
                    },
                    {
                         "caption": "替换Key为Value",
@@ -132,6 +172,10 @@
                         "command": "base64_decode_line"
                    },
                    {
+                        "caption": "-"
+
+                   },
+                   {
                         "caption": "URL 编码",
                         "command": "url_encode_decode_text",
                         "args": {"cmd":"encode"}
@@ -140,6 +184,10 @@
                         "caption": "URL 解码",
                         "command": "url_encode_decode_text",
                         "args": {"cmd":"decode"}
+                   },
+                   {
+                        "caption": "-"
+
                    },
                    {
                         "caption": "Md5加密（全部）",
