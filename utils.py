@@ -158,6 +158,18 @@ def select_ipv4_range(view):
     return unique_sort_ipv4(ips)
 
 
+def select_ipv4_port(view):
+    pattern = r'(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)((([\-](1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])|/(1\d|2\d|3[0-2]|[1-9]))(\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d))?)?):(\d{1,5})'
+    regions = view.find_all(pattern)
+    ip_ports = []
+    for region in regions:
+        text = view.substr(region)
+        if int(text.split(':')[1]) <= 65535:
+            ip_ports.append(text)
+        
+    return ip_ports
+
+
 def select_domain(view):
     pattern = r'([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+('+top_sufix+'|'+country_sufix+')'
     regions = view.find_all(pattern, sublime.IGNORECASE)
@@ -513,4 +525,3 @@ def format_nuclei_result(text):
         return ''
 
     return text
-
