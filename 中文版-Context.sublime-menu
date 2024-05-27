@@ -19,6 +19,10 @@
                         "command": "select_ipv4_range"
                    },
                    {
+                        "caption": "提权 IPv4 (ip:port)",
+                        "command": "select_ipv4_port"
+                   },
+                   {
                         "caption": "-"
 
                    },
