@@ -90,6 +90,13 @@ class SelectIpv4RangeCommand(sublime_plugin.TextCommand):
         new_view(self.view, edit, text)
 
 
+class SelectIpv4PortCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        ip_ports = select_ipv4_port(self.view)
+        text = '\n'.join(ip_ports)
+        new_view(self.view, edit, text)
+
+
 class ConvertRangeIp2cCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = convert_ipv4_to_C(self.view)
