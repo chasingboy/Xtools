@@ -6,6 +6,7 @@
   <img src="https://img.shields.io/github/last-commit/chasingboy/Xtools">
   <img src="https://img.shields.io/github/stars/chasingboy/Xtools?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/Xtools">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=chasingboy.Xtools&left_color=green&right_color=#66ccff">
 </p>
 
 <img width="975" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/f20db515-4e9e-4c4d-aec9-ed4a310a0f34">
