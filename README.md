@@ -2,7 +2,7 @@
 <h3 align="center">Xtools 是一款 Sublime Text 插件、同时是一款简单的资产处理、命令行调用工具</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/Plugin-Sublime_Text-blue?color=rgb(138%2C171%2C128)">
-  <img src="https://img.shields.io/badge/Version-V3.3.1-green?style=flat">
+  <img src="https://img.shields.io/badge/Version-V3.3.2-green?style=flat">
   <img src="https://img.shields.io/github/last-commit/chasingboy/Xtools">
   <img src="https://img.shields.io/github/stars/chasingboy/Xtools?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/Xtools">
@@ -254,3 +254,5 @@ aaaaa_ascii@ https://blog.csdn.net/aaaaa_ascii/article/details/131956793
 [+] 2024-05-19 增加添加前缀｜后缀 功能，修复 nmap 结果转换 bug
 
 [+] 2024-05-27 增加提取 ip:port 格式功能
+
+[+] 2024-05-29 修复 fscan 新版本(1.8.x)结果整理 bug
