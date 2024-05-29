@@ -32,13 +32,13 @@ def select_web_poc(text:str) ->str:
 
 def select_web_info(text:str) ->str:
     web_list = re.findall(
-        r'WebTitle:\s*(http.*?)\s+code:(\d+)\s+len:(.*?)\s+title:(.*?)\n', text
+        r'WebTitle:?\s*(http.*?)\s+code:(\d+)\s+len:(.*?)\s+title:(.*?)\n', text+'\n'
     )
 
     if web_list == []:
         return 'Web Code｜Title 等信息为空'
 
-    finger_list = re.findall(r'InfoScan:\s*(http.*?)\s+\[(.*?)]', text)
+    finger_list = re.findall(r'InfoScan:?\s*(http.*?)\s+\[(.*?)]', text)
     
     webinfo = []
     for line in web_list:
@@ -59,16 +59,19 @@ def select_web_info(text:str) ->str:
 
 def select_ip_exp(text:str) -> str:
     ip_exp_list = re.findall(
-            r'\[\+]\s*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s+(.*)', text
+            r'\[\+]\s*(.*)\s*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\s+(.*)', text
     )
     if ip_exp_list == []:
         return 'Exp 检测漏洞结果为空'
     
-    ip_exp_list = [(
-        'IP: {ip} Exp: {exp}'.format(ip=line[0],exp=line[1])
-        ) for line in ip_exp_list
+    ip_exp_list = [(' '.join(line)).strip() for line in ip_exp_list]
+    
+    ip_exp_list = [
+        line for line in ip_exp_list if (
+            line.startswith('http') == False and line.startswith('InfoScan') == False
+        )
     ]
-
+    
     return '[+] ' + '\n[+] '.join(ip_exp_list)
 
 
@@ -101,11 +104,11 @@ def select_os_info(text:str) -> str:
         osinfo += '[*] {}\n'.format(line)
 
     # NetBios:\s*(.*?)\s+(.*?\S)\s+(.*)
-    netbios_list = re.findall(r'(NetBios:\s*\d+\.\d+\.\d+\.\d+..+)', text)
+    netbios_list = re.findall(r'(NetBios:?\s*\d+\.\d+\.\d+\.\d+..+)', text)
     for line in netbios_list:
         osinfo += '[*] {}\n'.format(line)
 
-    netinfo_list = re.findall(r'(NetInfo:\n\[\*]\s*\d+\.\d+\.\d+\.\d+\s*\n(\s*\[\->].+\n)*)', text)
+    netinfo_list = re.findall(r'(NetInfo:?\n\[\*]\s*\d+\.\d+\.\d+\.\d+\s*\n(\s*\[\->].+\n)*)', text)
     netinfo_list = [line[0] for line in netinfo_list]
 
     for line in netinfo_list:
