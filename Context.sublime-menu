@@ -307,6 +307,42 @@
 
             },
             {
+                "caption": "Xtools Themes",
+                "command": "setting_xtools_theme",
+                "children": [
+                    {
+                        "caption": "Default-Catppuccin Macchiato",
+                        "command": "setting_xtools_theme",
+                        "args": {"theme": "Default-Catppuccin Macchiato"}
+                    },
+                    {
+                        "caption": "Default-Catppuccin Mocha",
+                        "command": "setting_xtools_theme",
+                        "args": {"theme": "Default-Catppuccin Mocha"}
+                    },
+                    {
+                        "caption": "Default-Palenight Theme",
+                        "command": "setting_xtools_theme",
+                        "args": {"theme": "Default-Palenight Theme"}
+                    },
+                    {
+                        "caption": "Palenight-Catppuccin Macchiato",
+                        "command": "setting_xtools_theme",
+                        "args": {"theme": "Palenight Theme-Catppuccin Macchiato"}
+                    },
+                    {
+                        "caption": "Palenight-Catppuccin Mocha",
+                        "command": "setting_xtools_theme",
+                        "args": {"theme": "Palenight Theme-Catppuccin Mocha"}
+                    },
+                    {
+                        "caption": "Palenight-Palenight Theme",
+                        "command": "setting_xtools_theme",
+                        "args": {"theme": "Palenight Theme-Palenight Theme"}
+                    },
+                ],
+            },
+            {
                 "caption": "Xtools Notebook",
                 "command": "xtools_note_book"
             }, 
