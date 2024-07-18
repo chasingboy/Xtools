@@ -1,0 +1,47 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+	"variables":
+	{
+	},
+	"globals":
+	{
+	},
+	"rules":
+	[
+		{
+            "name": "Xtools Red",
+            "scope": "xtools.red",
+            "foreground": "var(red)"
+        },
+        {
+            "name": "Xtools Blue",
+            "scope": "xtools.blue",
+            "foreground": "var(blue)"
+        },
+        {
+            "name": "Xtools Peach",
+            "scope": "xtools.peach",
+            "foreground": "var(orange)"
+        },
+        {
+            "name": "Xtools Mauve",
+            "scope": "xtools.mauve",
+            "foreground": "var(yellow)"
+        },
+        {
+            "name": "Xtools Green",
+            "scope": "xtools.green",
+            "foreground": "var(yellow2)"
+        },
+        {
+            "name": "Xtools Sky",
+            "scope": "xtools.sky",
+            "foreground": "var(purple)"
+        },
+        {
+            "name": "Xtools Comment",
+            "scope": "xtools.comment",
+            "foreground": "var(yellow5)"
+        },
+	]
+}
