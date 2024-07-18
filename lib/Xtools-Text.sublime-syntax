@@ -24,61 +24,61 @@ contexts:
 
     # fscan
     - match: (?i)(SSH|RDP|SMB|SMB2-shares):.+
-      scope: message.error
+      scope: xtools.red
 
     - match: (?i)(Mysql|Oracle|Mssql|Mongodb|Postgres):.+
-      scope: variable.function
+      scope: xtools.blue
 
     - match: (?i)(redis|Mongodb|ftp|Memcached):.+
-      scope: constant.numeric
+      scope: xtools.peach
 
 
   embed:
     - match: (200|206)$
-      scope: string
+      scope: xtools.green
 
     - match: (301|302|305|307)$
-      scope: constant.character
+      scope: xtools.mauve
 
     - match: (400|401|402|403|404|406|416)$
-      scope: message.error
+      scope: xtools.red
 
     - match: (500|501|502|503)$
-      scope: constant.numeric
+      scope: xtools.peach
 
     - match: (http|tcp|file|ssl)$
-      scope: keyword.control.import.python
+      scope: xtools.pink
 
     - match: (info$)
-      scope: variable.function
+      scope: xtools.blue
 
     - match: (?i)(low)
-      scope: string
+      scope: xtools.green
 
     - match: (?i)(medium)
-      scope: constant.numeric
+      scope: xtools.peach
 
     - match: (?i)(high|critical)
-      scope: message.error
+      scope: xtools.red
 
-    - match: (?i)(nginx|apache|tomcat|php|java|node|Tengine|Spring|HSTS|\ |,)
-      scope: string
+    - match: (?i)(nginx|apache|tomcat|phpinfo|php|phpmyadmin|java|node|Tengine|Spring|HSTS|\ |,)
+      scope: xtools.keyword
 
     - match: (?i)(admin|root):.+
-      scope: constant.numeric
+      scope: xtools.peach
 
     - match: (?i)(Finger:\ Null)
-      scope: comment
+      scope: xtools.comment
 
     - match: (?i)(Finger:.+)
-      scope: message.error
+      scope: xtools.red
 
     - match: ([\d])+$
-      scope: variable.function
+      scope: xtools.blue
 
     - match: .*(400|401|402|403|404|406|416|500|501|502|503).*
-      scope: constant.numeric
+      scope: xtools.peach
 
     - match: .+[\w\d\s\u4e00-\u9fa5\-].+
-      scope: punctuation.definition.annotation
+      scope: xtools.sky
 
