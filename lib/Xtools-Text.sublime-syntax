@@ -62,7 +62,7 @@ contexts:
       scope: xtools.red
 
     - match: (?i)(nginx|apache|tomcat|phpinfo|php|phpmyadmin|java|node|Tengine|Spring|HSTS|\ |,)
-      scope: xtools.keyword
+      scope: xtools.red
 
     - match: (?i)(admin|root):.+
       scope: xtools.peach
