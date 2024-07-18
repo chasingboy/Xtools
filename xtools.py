@@ -48,7 +48,7 @@ except:
 -> 版本信息
 '''
 
-VERSION = '3.3.2'
+VERSION = '4.1.1'
 
 ABOUT_XTOOLS = '''
 About Xtools
@@ -503,6 +503,18 @@ class SettingXtoolsConfigCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         config_file = os.path.join(XTOOLS_ROOT,"Context.sublime-menu")
         self.view.window().open_file(config_file)
+
+
+# Xtools Theme
+class SettingXtoolsTheme(sublime_plugin.TextCommand):
+    def run(self, edit, theme):
+        theme, color = theme.split("-")
+        theme = "{t}.sublime-theme".format(t=theme)
+        color = "{c}.sublime-color-scheme".format(c=color)
+        
+        sublime.load_settings('Preferences.sublime-settings').set('theme', theme)
+        sublime.load_settings('Preferences.sublime-settings').set('color_scheme', color)
+        sublime.save_settings('Preferences.sublime-settings')
         
 
 # Notebook
