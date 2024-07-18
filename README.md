@@ -221,6 +221,11 @@ def new_view(view, edit, text):
 
 <img width="1749" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/62fdb335-21fb-46f8-b659-e3144974db59">
 
+### Xtools 主题设置
+Xtools 整合了 Palenight 和 Catppuccin 两款主题，便于格式化 httpx｜nuclei｜fscan 等结果。
+
+<img width="1460" alt="image" src="https://github.com/user-attachments/assets/e4ebea57-1c49-4b09-aa00-2771caaddf50">
+
 
 ### 特别感谢
 xinyu2428@ https://github.com/xinyu2428/HTML_TOOLS
@@ -256,3 +261,5 @@ aaaaa_ascii@ https://blog.csdn.net/aaaaa_ascii/article/details/131956793
 [+] 2024-05-27 增加提取 ip:port 格式功能
 
 [+] 2024-05-29 修复 fscan 新版本(1.8.x)结果整理 bug
+
+[+] 2024-07-18 增加 Xtools 主题设置功能
