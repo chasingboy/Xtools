@@ -19,7 +19,7 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
 日常渗透中使用过一款资产文本清洗工具,使用起来感觉不错，并且添加了一些额外功能和修改了暗黑主题，在此感谢 xinyu2428 师傅。
 
 
-在日常使用过程中，总感觉缺少了点什么。思考着继续补充 javascript 代码，发现无法和命令行进行交互，遂放弃。一番挣扎过后，发现很多时候都在使用 Subliem Text 编辑器，嗯，最后的思路就是集成在 Sublime Text 插件。这样一来，同时减少了很多的 ctl+c 和 ctl+v。  
+但在日常使用过程中，总感觉缺少了点什么。思考着继续补充 javascript 代码，发现无法和命令行进行交互，遂放弃。一番挣扎过后，发现很多时候都在使用 Subliem Text 编辑器，嗯，最后的思路就是集成在 Sublime Text 插件。这样一来，同时减少了很多的 ctl+c 和 ctl+v。  
 
 <img width="1649" alt="1" src="https://github.com/chasingboy/Xtools/assets/39737245/e3f15d93-f6c7-4baf-9d44-ca01dfbab00d">
   
