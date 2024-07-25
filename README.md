@@ -90,7 +90,7 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
                         "command": "run_cmd",
                         "args": {"cmd":"httpx -x GET -sc -title -l target.txt"}
                     },
-{
+                    {
                         "caption": "httpx [POST]",
                         "command": "run_cmd",
                         "args": {"cmd":"httpx -x POST -sc -title -l target.txt"}
