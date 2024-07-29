@@ -259,7 +259,7 @@ class SelectLinesCommand(sublime_plugin.TextCommand):
         for line in buffers.split('\n'):
             for fs in findstr:
                 if fs in line or fs == line:
-                    text += line + '\n'
+                    text += line.strip() + '\n'
         
         new_view(self.view, edit, text)
 
