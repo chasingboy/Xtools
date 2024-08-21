@@ -27,7 +27,7 @@
 
                    },
                    {
-                        "caption": "转换IP范围[C段]为IPv4",
+                        "caption": "拆分IP范围[C段]为IPv4",
                         "command": "convert_range_c2ip"
                    },
                    {
