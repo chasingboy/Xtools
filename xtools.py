@@ -48,7 +48,7 @@ except:
 -> 版本信息
 '''
 
-VERSION = '4.1.1'
+VERSION = '4.1.5'
 
 ABOUT_XTOOLS = '''
 About Xtools
@@ -97,6 +97,12 @@ class SelectIpv4PortCommand(sublime_plugin.TextCommand):
         new_view(self.view, edit, text)
 
 
+class CountIpv4NumberCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        text = count_ipv4_number(self.view)
+        new_view(self.view, edit, text)
+
+
 class ConvertRangeIp2cCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         text = convert_ipv4_to_C(self.view)
@@ -117,7 +123,7 @@ class ConvertRangeIp2bCommand(sublime_plugin.TextCommand):
 
 class SelectDomainRootAllCommand(sublime_plugin.TextCommand):
     def remove(self,edit):
-        exts = ['.html','.login','.action','.htm']
+        exts = ['.html','.login','.action','.htm','.shtml','.asp','.aspx','.jsp','.jspx']
         text = get_buffer_text(self.view)
         _text = text
         for ext in exts:
@@ -133,6 +139,7 @@ class SelectDomainRootAllCommand(sublime_plugin.TextCommand):
 
         text = '\n'.join(rootdomains) if cmd == 'root' else '\n'.join(domains)
         new_view(self.view, edit, text)
+
 
 class FilterDnsCdnHostCommand(sublime_plugin.TextCommand):
     def run(self, edit):
