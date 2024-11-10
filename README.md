@@ -37,6 +37,7 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
      1.1.1.1/28
      ... ...
      ```
+   * 统计 IPv4 次数
    * 提取 domain（根域名、根域名|子域名）
    * 提取 url（有路径、无路径）
    * 提取 router（js、text）
