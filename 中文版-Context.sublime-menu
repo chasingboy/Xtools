@@ -19,8 +19,16 @@
                         "command": "select_ipv4_range"
                    },
                    {
-                        "caption": "提权 IPv4 (ip:port)",
+                        "caption": "提取 IPv4 (ip:port)",
                         "command": "select_ipv4_port"
+                   },
+                   {
+                        "caption": "-"
+
+                   },
+                   {
+                        "caption": "统计 IPv4 次数",
+                        "command": "count_ipv4_number"
                    },
                    {
                         "caption": "-"
