@@ -27,6 +27,14 @@
 
                    },
                    {
+                        "caption": "Count ipv4 (Number)",
+                        "command": "count_ipv4_number"
+                   },
+                   {
+                        "caption": "-"
+
+                   },
+                   {
                         "caption": "Convert Range[C] to ipv4",
                         "command": "convert_range_c2ip"
                    },
