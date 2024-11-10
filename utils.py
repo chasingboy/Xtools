@@ -170,6 +170,27 @@ def select_ipv4_port(view):
     return ip_ports
 
 
+def count_ipv4_number(view):
+    pattern = r'(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)((([\-](1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|[1-9])|/(1\d|2\d|3[0-2]|[1-9]))(\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d)\.(1\d{2}|2[0-4]\d|25[0-5]|[1-9]\d|\d))?)?)'
+    regions = view.find_all(pattern)
+    ipv4_counts = {}
+    
+    for region in regions:
+        text = view.substr(region)
+        if text in ipv4_counts.keys():
+            ipv4_counts[text] = ipv4_counts[text] + 1
+        else:
+            ipv4_counts[text] = 1
+
+    rets = sorted(ipv4_counts.items(), key=lambda v:v[1], reverse = True)
+
+    text = '[+] 统计 IP 数量: \n'
+    for line in rets:
+        text += '{0} [{1}]'.format(line[0],line[1]) + "\n"
+        
+    return text
+
+
 def select_domain(view):
     pattern = r'([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+('+top_sufix+'|'+country_sufix+')'
     regions = view.find_all(pattern, sublime.IGNORECASE)
