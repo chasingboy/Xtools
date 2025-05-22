@@ -234,6 +234,10 @@ Xtools 整合了 Palenight 和 Catppuccin 两款主题，便于格式化 httpx�
 
 <img width="1460" alt="image" src="https://github.com/user-attachments/assets/e4ebea57-1c49-4b09-aa00-2771caaddf50">
 
+### 公众号
+该公众号用于编写 Xtools 系列工具使用文档和工具更新通知
+
+<p align="center"><img width="300" alt="image" src="https://github.com/chasingboy/appsx/blob/main/assets/xsec.png"></p>
 
 ### 特别感谢
 xinyu2428@ https://github.com/xinyu2428/HTML_TOOLS
