@@ -14,11 +14,8 @@ from .lib.classify_fscan_result import classify_fscan_result
 : HOME = '/Users/xxx/'
 : workdir = '$HOME/.xtools'
 """
-
-if platform == 'windows':
-    HOME = os.environ['HOMEPATH']
-else:
-    HOME = os.environ['HOME']
+# 跨平台支持, 获取 HOME PATH
+HOME = os.path.expanduser("~")
 
 '''
 -> 如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件设置系统的 "<用户名>"
