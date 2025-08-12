@@ -96,24 +96,24 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
     eg: httpx -l target.txt
 */
 {
-  "caption": "httpx [GET]",
-  "command": "run_cmd",
-  "args": {"cmd":"httpx -x GET -sc -title -l target.txt"}
+    "caption": "httpx [GET]",
+    "command": "run_cmd",
+    "args": {"cmd":"httpx -x GET -sc -title -l target.txt"}
 },
 {
-  "caption": "httpx [POST]",
-  "command": "run_cmd",
-  "args": {"cmd":"httpx -x POST -sc -title -l target.txt"}
+    "caption": "httpx [POST]",
+    "command": "run_cmd",
+    "args": {"cmd":"httpx -x POST -sc -title -l target.txt"}
 },
 {
-  "caption": "nuclei",
-  "command": "run_cmd",
-  "args": {"cmd":"nuclei -l target.txt"}
+    "caption": "nuclei",
+    "command": "run_cmd",
+    "args": {"cmd":"nuclei -l target.txt"}
 },
 {
-  "caption": "sqlmap",
-  "command": "run_cmd",
-  "args": {"cmd":"sqlmap -r target.txt"}
+    "caption": "sqlmap",
+    "command": "run_cmd",
+    "args": {"cmd":"sqlmap -r target.txt"}
 },
 {
     "caption": "dirscan (dir1.txt)",
@@ -137,9 +137,9 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
    eg: httpx -l target.txt
 */
 {
-  "caption": "httpx",
-  "command": "run_cmd",
-  "args": {"cmd":"C:\\Users\\kali\\httpx\\httpx -sc -title -l target.txt"}
+    "caption": "httpx",
+    "command": "run_cmd",
+    "args": {"cmd":"C:\\Users\\kali\\httpx\\httpx -sc -title -l target.txt"}
 },
 /* -- END -- */
 ```
