@@ -93,40 +93,40 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
 
 ```
 /* 通过 <args->cmd> 设置命令, 设置目标为 target.txt, 运行时自动替换为临时文件
-                       eg: httpx -l target.txt
-                       */
-                    {
-                        "caption": "httpx [GET]",
-                        "command": "run_cmd",
-                        "args": {"cmd":"httpx -x GET -sc -title -l target.txt"}
-                    },
-                    {
-                        "caption": "httpx [POST]",
-                        "command": "run_cmd",
-                        "args": {"cmd":"httpx -x POST -sc -title -l target.txt"}
-                    },
-                    {
-                        "caption": "nuclei",
-                        "command": "run_cmd",
-                        "args": {"cmd":"nuclei -l target.txt"}
-                    },
-                    {
-                        "caption": "sqlmap",
-                        "command": "run_cmd",
-                        "args": {"cmd":"sqlmap -r target.txt"}
-                    },
-                    {
-                        "caption": "dirscan (dir1.txt)",
-                        "command": "run_cmd",
-                        "args": {"cmd":"dirscan -w /.../dicts/dir1.txt -l target.txt"}
-                    },
-                    {
-                        "caption": "dirscan (dir2.txt)",
-                        "command": "run_cmd",
-                        "args": {"cmd":"dirscan -w /.../dicts/dir2.txt -l target.txt"}
-                    },
+    eg: httpx -l target.txt
+*/
+{
+  "caption": "httpx [GET]",
+  "command": "run_cmd",
+  "args": {"cmd":"httpx -x GET -sc -title -l target.txt"}
+},
+{
+  "caption": "httpx [POST]",
+  "command": "run_cmd",
+  "args": {"cmd":"httpx -x POST -sc -title -l target.txt"}
+},
+{
+  "caption": "nuclei",
+  "command": "run_cmd",
+  "args": {"cmd":"nuclei -l target.txt"}
+},
+{
+  "caption": "sqlmap",
+  "command": "run_cmd",
+  "args": {"cmd":"sqlmap -r target.txt"}
+},
+{
+    "caption": "dirscan (dir1.txt)",
+    "command": "run_cmd",
+    "args": {"cmd":"dirscan -w /.../dicts/dir1.txt -l target.txt"}
+},
+{
+    "caption": "dirscan (dir2.txt)",
+    "command": "run_cmd",
+    "args": {"cmd":"dirscan -w /.../dicts/dir2.txt -l target.txt"}
+},
 
-                    /* -- END -- */
+/* -- END -- */
 ```
 
 ~~⚠️注意：命令行功能目前只支持 macOS。~~
@@ -134,14 +134,14 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
 #### 新增支持 windows 命令行调用
 ```
 /* 通过 <args->cmd> 设置命令, 设置目标为 target.txt, 运行时自动替换为临时文件
-                       eg: httpx -l target.txt
-                       */
-                    {
-                        "caption": "httpx",
-                        "command": "run_cmd",
-                        "args": {"cmd":"C:\\Users\\kali\\httpx\\httpx -sc -title -l target.txt"}
-                    },
-                    /* -- END -- */
+   eg: httpx -l target.txt
+*/
+{
+  "caption": "httpx",
+  "command": "run_cmd",
+  "args": {"cmd":"C:\\Users\\kali\\httpx\\httpx -sc -title -l target.txt"}
+},
+/* -- END -- */
 ```
 比如配置 httpx 命令，或者把 httpx 命令添加到环境变量。
 
@@ -177,7 +177,7 @@ httpx｜nuclei 工具的扫描结果保存在 txt 文件中，在二次查看时
 
 #### 安装报错
 最近有师傅反馈，window 11 安装时出现错误，功能无法正常使用。经过调试，发现是师傅的系统**用户名是中文**。如果系统的用户名是中文且安装不成功，可以尝试在 xtools.py 文件自定义系统用户名。
-```
+```python
 if platform == 'windows':
     HOME = os.environ['HOMEPATH']
 else:
