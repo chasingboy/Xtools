@@ -25,7 +25,7 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
   
 ### 功能
 
-1. IP、domain、url 处理
+1. IP、Domain、URL 处理
    * 提取 IPv4 (内网、外网、IP段)
    * IPv4 和 C 段互转
    * IPv4 地址范围拆分
@@ -38,9 +38,9 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
      ... ...
      ```
    * 统计 IPv4 次数
-   * 提取 domain（根域名、根域名|子域名）
-   * 提取 url（有路径、无路径）
-   * 提取 router（js、text）
+   * 提取 Domain（根域名、根域名|子域名）
+   * 提取 URL（有路径、无路径）
+   * 提取 Router（js｜text）
    * 过滤 CDN 和 DNS 域名和IP（需补充域名和IP）
 2. 简单文本处理
    * 删除特殊字符、空格、`[*]`、`(*)` （* 表示括号内的所有内容）
@@ -56,7 +56,7 @@ Xtools 是一款 Sublime Text 插件，同时是一款简单的资产处理工�
    * sqlmap
    * ......（自行配置）
 5. 整理工具扫描结果
-   * 转换 nmap|masscan xml结果为 host:port 格式
+   * 转换 nmap｜masscan xml 结果为 host:port 格式
    * 整理和分类 fscan 扫描结果
    * 整理和高亮 httpx 和 nuclei 扫描结果
 6. 渗透测试辅助模块
@@ -240,13 +240,10 @@ Xtools 整合了 Palenight 和 Catppuccin 两款主题，便于格式化 httpx�
 <p align="center"><img width="300" alt="image" src="https://github.com/chasingboy/appsx/blob/main/assets/xsec.png"></p>
 
 ### 特别感谢
-xinyu2428@ https://github.com/xinyu2428/HTML_TOOLS
-
-linkfinder@ https://github.com/GerbenJavado/LinkFinder
-
-ZororoZ@ https://github.com/ZororoZ/fscanOutput/tree/main
-
-aaaaa_ascii@ https://blog.csdn.net/aaaaa_ascii/article/details/131956793
+* xinyu2428@ https://github.com/xinyu2428/HTML_TOOLS
+* linkfinder@ https://github.com/GerbenJavado/LinkFinder
+* ZororoZ@ https://github.com/ZororoZ/fscanOutput/tree/main
+* aaaaa_ascii@ https://blog.csdn.net/aaaaa_ascii/article/details/131956793
 
 
 ### 更新记录
@@ -258,13 +255,13 @@ aaaaa_ascii@ https://blog.csdn.net/aaaaa_ascii/article/details/131956793
 
 [+] 2023-12-15 修复新版本 Sublime Text 中部分功能 Bug。
 
-[+] 2024-01-02 增加 URL编码解码、nmap 扫描结果转换、反弹shell命令生成
+[+] 2024-01-02 增加 URL 编码解码、nmap 扫描结果转换、反弹shell命令生成
 
 [+] 2024-01-02 增加中文版配置文件、临时记事本
 
 [+] 2024-01-03 修改 applescript 模块为解压状态，不需要手动解压
 
-[+] 2024-04-14 把panel显示转为新文件显示，适应新版本 Sublime Text
+[+] 2024-04-14 把 panel 显示转为新文件显示，适应新版本 Sublime Text
 
 [+] 2024-04-22 增加 fscan｜httpx｜nuclei 结果整理功能
 
