@@ -1,10 +1,10 @@
 [
     {
         "id": "xtools",
-        "caption": "Xtools",
+        "caption": "🖥️ Xtools",
         "children": [
             {
-                "caption": "IP And Domain",
+                "caption": "💻 IP And Domain",
                 "children": [
                     {
                         "caption": "Select ipv4 (LAN)",
@@ -71,7 +71,7 @@
                 ]
             },
             {
-                "caption": "URL And Router",
+                "caption": "🌐 URL And Router",
                 "children": [
                     {
                         "caption": "Select Urls (- path)",
@@ -93,7 +93,7 @@
                 ]
             },
             {
-                "caption": "Text Editing | Finding",
+                "caption": "🔎 Text Editing | Finding",
                 "children": [
                     {
                         "caption": "Remove Special Chars",
@@ -169,7 +169,7 @@
                 ]
             },
             {
-                "caption": "Text Encode | Decode",
+                "caption": "🖱️ Text Encode | Decode",
                 "children": [
                     {
                         "caption": "Base64 Encode (text)",
@@ -218,7 +218,11 @@
                 ]
             },
             {
-                "caption": "Running Command",
+                "caption": "-"
+
+            },
+            {
+                "caption": "⭕ Running Command",
                 "children": [
                     {
                         "caption": "curl (Download File)",
@@ -248,7 +252,7 @@
                 ]
             },
             {
-                "caption": "Format Tools Result",
+                "caption": "♻️ Format Tools Result",
                 "children": [
                     {
                         "caption": "nmap (xml->host:port)",
@@ -281,7 +285,7 @@
                 ]
             },
             {
-                "caption": "Pentest Help Module",
+                "caption": "🕵️‍♀️ Pentest Help Module",
                 "children": [
                     {
                         "caption": "File Upload Package",
@@ -315,7 +319,7 @@
 
             },
             {
-                "caption": "Xtools Themes",
+                "caption": "🌓 Xtools Themes",
                 "command": "setting_xtools_theme",
                 "children": [
                     {
@@ -351,16 +355,26 @@
                 ],
             },
             {
-                "caption": "Xtools Notebook",
+                "caption": "⚙️ Xtools Setting",
+                "children": [
+                    {
+                        "caption": "Setting Config",
+                        "command": "setting_xtools_config"
+                    },
+                    {
+
+                        "caption": "English 🔜 Chinese",
+                        "command": "switch_language"
+                    },
+                ]
+            },
+            {
+                "caption": "📝 Xtools Notebook",
                 "command": "xtools_note_book"
             }, 
             {
-                "caption": "Setting Xtools Config",
-                "command": "setting_xtools_config"
-            },
-            {
 
-                "caption": "Input Text",
+                "caption": "⌨️ Input Text",
                 "command": "input_text"
             },
             {
@@ -368,7 +382,7 @@
 
             },
             {
-                "caption": "About Xtools",
+                "caption": "🖥️ About Xtools",
                 "command": "about_xtools"
             },
         ]
