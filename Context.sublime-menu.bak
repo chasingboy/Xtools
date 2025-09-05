@@ -1,10 +1,10 @@
 [
     {
         "id": "xtools",
-        "caption": "Xtools",
+        "caption": "🖥️ Xtools",
         "children": [
             {
-                "caption": "IP和域名模块",
+                "caption": "💻 IP和域名模块",
                 "children": [
                     {
                         "caption": "提取 IPv4 (内网)",
@@ -75,7 +75,7 @@
                 ]
             },
             {
-                "caption": "URL和路由模块",
+                "caption": "🌐 URL和路由模块",
                 "children": [
                     {
                         "caption": "提取URL (不包含路径)",
@@ -93,7 +93,7 @@
                 ]
             },
             {
-                "caption": "文本提取|替换|删除",
+                "caption": "🔎 文本提取|替换|删除",
                 "children": [
                     {
                         "caption": "删除特殊字符",
@@ -165,7 +165,7 @@
                 ]
             },
             {
-                "caption": "文本编码|解码",
+                "caption": "🖱️ 文本编码|解码",
                 "children": [
                     {
                         "caption": "Base64编码（全部）",
@@ -212,7 +212,11 @@
                 ]
             },
             {
-                "caption": "命令运行模块",
+                "caption": "-"
+
+           },
+            {
+                "caption": "⭕ 命令运行模块",
                 "children": [
                     {
                         "caption": "curl (Download File)",
@@ -242,7 +246,7 @@
                 ]
             },
             {
-                "caption": "整理工具结果",
+                "caption": "♻️ 整理｜高亮工具结果",
                 "children": [
                     {
                         "caption": "nmap (xml->host:port)",
@@ -275,7 +279,7 @@
                 ]
             },
             {
-                "caption": "渗透测试辅助模块",
+                "caption": "🕵️‍♀️ 渗透测试辅助模块",
                 "children": [
                     {
                         "caption": "文件上传请求包",
@@ -309,7 +313,7 @@
 
             },
             {
-                "caption": "Xtools 主题",
+                "caption": "🌓 Xtools 主题",
                 "command": "setting_xtools_theme",
                 "children": [
                     {
@@ -343,18 +347,28 @@
                         "args": {"theme": "Palenight Theme-Palenight Theme"}
                     },
                 ],
+            },
+            {
+                "caption": "⚙️ Xtools 配置",
+                "children": [
+                    {
+                        "caption": "设置 Config",
+                        "command": "setting_xtools_config"
+                    },
+                    {
+
+                        "caption": "中文 🔜 英文",
+                        "command": "switch_language"
+                    },
+                ]
             },           
             {
-                "caption": "Xtools 记事本",
+                "caption": "📝 Xtools 记事本",
                 "command": "xtools_note_book"
             }, 
             {
-                "caption": "Xtools 配置",
-                "command": "setting_xtools_config"
-            },
-            {
 
-                "caption": "输入文本",
+                "caption": "⌨️ 输入文本",
                 "command": "input_text"
             },
             {
@@ -362,7 +376,7 @@
 
             },
             {
-                "caption": "关于 Xtools",
+                "caption": "🖥️ 关于 Xtools",
                 "command": "about_xtools"
             },
         ]
