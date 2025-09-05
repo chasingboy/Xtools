@@ -2,7 +2,7 @@
 <h3 align="center">Xtools 是一款 Sublime Text 插件、同时是一款简单的资产处理、命令行调用工具</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/Plugin-Sublime_Text-blue?color=rgb(138%2C171%2C128)">
-  <img src="https://img.shields.io/badge/Version-V4.1.5-green?style=flat">
+  <img src="https://img.shields.io/badge/Version-V4.2.0-green?style=flat">
   <img src="https://img.shields.io/github/last-commit/chasingboy/Xtools">
   <img src="https://img.shields.io/github/stars/chasingboy/Xtools?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/Xtools">
@@ -225,9 +225,7 @@ def new_view(view, edit, text):
 <img width="1562" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/2c255868-fa2c-4e57-a6f3-c61e9a9e8e3f">
 
 ### Xtools 中文版设置
-在 Xtools 目录下，删除原有 `Context.sublime-menu` 文件，然后把文件 `中文版-Context.sublime-menu` 重命名为 `Context.sublime-menu` 即可。
-
-<img width="1749" alt="image" src="https://github.com/chasingboy/Xtools/assets/39737245/62fdb335-21fb-46f8-b659-e3144974db59">
+[Xtools] --> [Xtools Setting] --> [English 🔜 Chinese]
 
 ### Xtools 主题设置
 Xtools 整合了 Palenight 和 Catppuccin 两款主题，便于格式化 httpx｜nuclei｜fscan 等结果。
@@ -251,13 +249,13 @@ Xtools 整合了 Palenight 和 Catppuccin 两款主题，便于格式化 httpx�
 
 [+] 2023-07-18 增加一键排序去重、提取 javascript 文件路由。
 
-[+] 2023-08-28 增加提取 IP 段、转换 ipv4 支持 192.168.1.1-10 等格式
+[+] 2023-08-28 增加提取 IP 段｜转换 ipv4 支持 192.168.1.1-10 等格式
 
 [+] 2023-12-15 修复新版本 Sublime Text 中部分功能 Bug。
 
-[+] 2024-01-02 增加 URL 编码解码、nmap 扫描结果转换、反弹shell命令生成
+[+] 2024-01-02 增加 URL 编码解码｜nmap 扫描结果转换｜反弹shell命令生成
 
-[+] 2024-01-02 增加中文版配置文件、临时记事本
+[+] 2024-01-02 增加中文版配置文件｜临时记事本
 
 [+] 2024-01-03 修改 applescript 模块为解压状态，不需要手动解压
 
@@ -265,7 +263,7 @@ Xtools 整合了 Palenight 和 Catppuccin 两款主题，便于格式化 httpx�
 
 [+] 2024-04-22 增加 fscan｜httpx｜nuclei 结果整理功能
 
-[+] 2024-05-19 增加添加前缀｜后缀 功能，修复 nmap 结果转换 bug
+[+] 2024-05-19 增加添加前缀｜后缀 功能｜修复 nmap 结果转换 bug
 
 [+] 2024-11-10 增加统计 ipv4 次数功能
 
@@ -274,3 +272,5 @@ Xtools 整合了 Palenight 和 Catppuccin 两款主题，便于格式化 httpx�
 [+] 2024-05-29 修复 fscan 新版本(1.8.x)结果整理 bug
 
 [+] 2024-07-18 增加 Xtools 主题设置功能
+
+[+] 2024-09-05 修改 Xtools 页面布局｜增加一键中英文切换功能
