@@ -45,7 +45,7 @@ except:
 -> 版本信息
 '''
 
-VERSION = '4.1.5'
+VERSION = '4.2.0'
 
 ABOUT_XTOOLS = '''
 About Xtools
@@ -222,9 +222,9 @@ class RemoveSpecificStringCommand(sublime_plugin.TextCommand):
     def run(self, edit, str):
         text = get_buffer_text(self.view)
         if str == '[*]':
-            text = re.sub(r"\[.+\]",'',text)
+            text = re.sub(r"\[.*?\]",'',text)
         if str == '(*)':
-            text = re.sub(r"\(.+\)",'',text)
+            text = re.sub(r"\(.*?\)",'',text)
         if str == 'space':
             text = text.replace(' ','')
         update_file(self.view, edit, text)
@@ -519,7 +519,19 @@ class SettingXtoolsTheme(sublime_plugin.TextCommand):
         sublime.load_settings('Preferences.sublime-settings').set('theme', theme)
         sublime.load_settings('Preferences.sublime-settings').set('color_scheme', color)
         sublime.save_settings('Preferences.sublime-settings')
+ 
+
+# Change Language
+class SwitchLanguageCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        current_menu = os.path.join(XTOOLS_ROOT, "Context.sublime-menu")
+        backup_menu  = os.path.join(XTOOLS_ROOT, "Context.sublime-menu.bak")
+        tmp_menu     = os.path.join(XTOOLS_ROOT, "Context.sublime-menu.tmp")
         
+        os.rename(current_menu, tmp_menu)
+        os.rename(backup_menu, current_menu)
+        os.rename(tmp_menu, backup_menu)
+
 
 # Notebook
 class XtoolsNoteBookCommand(sublime_plugin.TextCommand):
