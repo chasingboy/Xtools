@@ -2,7 +2,7 @@
 <h3 align="center">Xtools 是一款 Sublime Text 插件、同时是一款简单的资产处理、命令行调用工具</h3>
 <p align="center">
   <img src="https://img.shields.io/badge/Plugin-Sublime_Text-blue?color=rgb(138%2C171%2C128)">
-  <img src="https://img.shields.io/badge/Version-V4.2.0-green?style=flat">
+  <img src="https://img.shields.io/badge/Version-V4.2.1-green?style=flat">
   <img src="https://img.shields.io/github/last-commit/chasingboy/Xtools">
   <img src="https://img.shields.io/github/stars/chasingboy/Xtools?style=flat&labelColor=rgb(41%2C52%2C52)&color=green">
   <img src="https://img.shields.io/github/issues/chasingboy/Xtools">
@@ -248,32 +248,34 @@ Xtools 整合了 Palenight 和 Catppuccin 两款主题，便于格式化 httpx�
 
 
 ### 更新记录
-[+] 2023-07-15 增加 Windows 命令行调用支持。
+[+] 2023-07-15【新增】Windows 命令行调用支持。
 
-[+] 2023-07-18 增加一键排序去重、提取 javascript 文件路由。
+[+] 2023-07-18【新增】一键排序去重、提取 javascript 文件路由。
 
-[+] 2023-08-28 增加提取 IP 段｜转换 ipv4 支持 192.168.1.1-10 等格式
+[+] 2023-08-28【新增】提取 IP 段｜转换 ipv4 支持 192.168.1.1-10 等格式
 
-[+] 2023-12-15 修复新版本 Sublime Text 中部分功能 Bug。
+[+] 2023-12-15【修复】新版本 Sublime Text 中部分功能 Bug。
 
-[+] 2024-01-02 增加 URL 编码解码｜nmap 扫描结果转换｜反弹shell命令生成
+[+] 2024-01-02【新增】URL 编码解码｜nmap 扫描结果转换｜反弹shell命令生成
 
-[+] 2024-01-02 增加中文版配置文件｜临时记事本
+[+] 2024-01-02【新增】中文版配置文件｜临时记事本
 
-[+] 2024-01-03 修改 applescript 模块为解压状态，不需要手动解压
+[+] 2024-01-03【修改】applescript 模块为解压状态，不需要手动解压
 
-[+] 2024-04-14 把 panel 显示转为新文件显示，适应新版本 Sublime Text
+[+] 2024-04-14【修复】把 panel 显示转为新文件显示，适应新版本 Sublime Text
 
-[+] 2024-04-22 增加 fscan｜httpx｜nuclei 结果整理功能
+[+] 2024-04-22【新增】fscan｜httpx｜nuclei 结果整理功能
 
-[+] 2024-05-19 增加添加前缀｜后缀 功能｜修复 nmap 结果转换 bug
+[+] 2024-05-19【新增】添加前缀｜后缀 功能｜修复 nmap 结果转换 bug
 
-[+] 2024-11-10 增加统计 ipv4 次数功能
+[+] 2024-11-10【新增】统计 ipv4 次数功能
 
-[+] 2024-05-27 增加提取 ip:port 格式功能
+[+] 2024-05-27【新增】提取 ip:port 格式功能
 
-[+] 2024-05-29 修复 fscan 新版本(1.8.x)结果整理 bug
+[+] 2024-05-29【修复】fscan 新版本(1.8.x)结果整理 bug
 
-[+] 2024-07-18 增加 Xtools 主题设置功能
+[+] 2024-07-18【新增】Xtools 主题设置功能
 
-[+] 2024-09-05 修改 Xtools 页面布局｜增加一键中英文切换功能
+[+] 2024-09-05【修改】Xtools 页面布局｜增加一键中英文切换功能
+
+[+] 2024-10-20【新增】nmap 提取结果格式 domain:port
