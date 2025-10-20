@@ -257,7 +257,12 @@
                     {
                         "caption": "nmap (xml->host:port)",
                         "command": "format_tools_result",
-                        "args": {"tool": "nmap"}
+                        "args": {"tool": "nmap", "mode": "ip"}
+                    },
+                    {
+                        "caption": "nmap (xml->domain:port)",
+                        "command": "format_tools_result",
+                        "args": {"tool": "nmap", "mode": "domain"}
                     },
                     {
                         "caption": "fscan (classify result)",
