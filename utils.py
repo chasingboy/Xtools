@@ -463,17 +463,25 @@ Formating some tool's resulte
 
 '''
 
-def format_nmap_open_port(file):
+def format_nmap_open_port(xmls, mode):
     try:
         import xml.etree.ElementTree
     except:
         sublime.message_dialog('[ERR] could not import xml.etree.ElementTree, please check and install')
+        return
 
-    root = xml.etree.ElementTree.parse(file).getroot()
+    root = xml.etree.ElementTree.fromstring(xmls)
     text, wafhosts = [], ['\n\n# WAF host:']
 
     for host in root.findall('host'):
-        address, ports = host.find('address').get('addr'), host.find('ports').findall('port')
+        address = host.find('address').get('addr')
+        ports   = host.find('ports').findall('port')
+        
+        if mode == "domain":
+            try:
+                address = host.find('hostnames').findall('hostname')[0].get('name')
+            except:
+                pass
 
         if len(ports) > 100:
             wafhosts.append(address)
@@ -491,8 +499,48 @@ def format_nmap_open_port(file):
             text.append(address + ':' + port)
 
     text = '\n'.join(list(set(text)))
-    
     if len(wafhosts) > 1:
+        text += '\n'.join(wafhosts)
+    
+    return text
+
+
+def select_nmap_ports_from_xml(xmls, mode):
+    '''
+     * when the xml parsed failed
+     * match port by regexp
+    '''
+    text, wafhosts = "", ['\n\n# WAF host:']
+    hosts = re.findall(r'<host.*?</host>', xmls, flags=re.DOTALL)
+
+    for host in hosts:
+        address, ports = '', []
+        for line in host.split("\n"):
+            if "<address" in line:
+                address = re.findall(r'<address addr="(.*?)" addrtype', line)[0]
+                break
+
+        if address == '':
+            continue
+
+        match = re.search(r'<hostname name="(.*?)" type=', host)
+        if match is not None and mode == "domain":
+            address = match.group(1)
+
+        for line in host.split("\n"):
+            if "<port protocol" in line:
+                port = re.findall(r'<port protocol="tcp" portid="(.*?)">', line)[0]
+                ports.append(address + ":" + port)
+
+            if len(ports) > 100:
+                ports = []
+                wafhosts.append(address)
+                break
+        
+        if len(ports) > 0:
+            text += ("\n".join(ports)) + "\n"
+    
+    if len(wafhosts) > 1 :
         text += '\n'.join(wafhosts)
     
     return text
