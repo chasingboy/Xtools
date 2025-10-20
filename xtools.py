@@ -428,12 +428,15 @@ class CurlDownloadFileCommand(sublime_plugin.TextCommand):
 
 # Format tools result
 class FormatToolsResultCommand(sublime_plugin.TextCommand):
-    def run(self, edit, tool):
-        text = get_buffer_text(self.view)   
+    def run(self, edit, tool, mode):
+        text = get_buffer_text(self.view)
         global workdir
+        
         if tool == 'nmap':
-            file = write_file(workdir,text)
-            text = format_nmap_open_port(file)
+            try:
+                text = format_nmap_open_port(text, mode)
+            except:
+                text = select_nmap_ports_from_xml(text, mode)
 
         if len(text) > 0:
             new_view(self.view, edit, text)
