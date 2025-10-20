@@ -45,7 +45,7 @@ except:
 -> 版本信息
 '''
 
-VERSION = '4.2.0'
+VERSION = '4.2.1'
 
 ABOUT_XTOOLS = '''
 About Xtools
