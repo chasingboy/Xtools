@@ -4,22 +4,22 @@
         "caption": "🖥️ Xtools",
         "children": [
             {
-                "caption": "💻 IP和域名模块",
+                "caption": "💻 IP And Domain",
                 "children": [
                     {
-                        "caption": "提取 IPv4 (内网)",
+                        "caption": "Select ipv4 (LAN)",
                         "command": "select_ipv4_lan"
                    },
                    {
-                        "caption": "提取 IPv4 (外网)",
+                        "caption": "Select ipv4 (WAN)",
                         "command": "select_ipv4_wan"
                    },
                    {
-                        "caption": "提取 IPv4 (段)",
+                        "caption": "Select ipv4 (Range)",
                         "command": "select_ipv4_range"
                    },
                    {
-                        "caption": "提取 IPv4 (ip:port)",
+                        "caption": "Select ipv4 (ip:port)",
                         "command": "select_ipv4_port"
                    },
                    {
@@ -27,7 +27,7 @@
 
                    },
                    {
-                        "caption": "统计 IPv4 次数",
+                        "caption": "Count ipv4 (Number)",
                         "command": "count_ipv4_number"
                    },
                    {
@@ -35,15 +35,15 @@
 
                    },
                    {
-                        "caption": "拆分IP范围[C段]为IPv4",
+                        "caption": "Convert Range[C] to ipv4",
                         "command": "convert_range_c2ip"
                    },
                    {
-                        "caption": "转换IPv4为C段",
+                        "caption": "Convert ipv4 to Range[C]",
                         "command": "convert_range_ip2c"
                    },
                    {
-                        "caption": "转换IPv4为B段",
+                        "caption": "Convert ipv4 to Range[B]",
                         "command": "convert_range_ip2b"
                    },
                    {
@@ -51,98 +51,102 @@
 
                    },
                    {
-                        "caption": "提取域名 (根域名)",
+                        "caption": "Select domain (root)",
                         "command": "select_domain_root_all",
                         "args": {"cmd": "root"}
                    },
                    {
-                        "caption": "提取域名 (根|子域名)",
+                        "caption": "Select domain (all)",
                         "command": "select_domain_root_all",
                         "args": {"cmd": "all"}
                    },
                    {
-                        "caption": "-"
-
-                   },
-                   {
-                        "caption": "过滤IPv4 (DNS,CDN)",
+                        "caption": "Filter ip (DNS,CDN)",
                         "command": "filter_dns_cdn_host"
                    },
                    {
-                        "caption": "过滤域名 (DNS,CDN)",
+                        "caption": "Filter domain (DNS,CDN)",
                         "command": "filter_dns_cdn_domain"
                    },
                 ]
             },
             {
-                "caption": "🌐 URL和路由模块",
+                "caption": "🌐 URL And Router",
                 "children": [
                     {
-                        "caption": "提取URL (不包含路径)",
+                        "caption": "Select Urls (- path)",
                         "command": "select_urls_exclude_path"
                    },
                    {
-                        "caption": "提取URL (包含路径)",
+                        "caption": "Select Urls (+ path)",
                         "command": "select_urls_include_path"
                    },
                    {
-                        "caption": "提取路径|路由",
+                        "caption": "Select Routers (js,text)",
                         "command": "select_routers_from_text"
 
                    },
+                   {
+                        "caption": "Recover Js Link (webpack)",
+                        "command": "recover_js_link"
+                    },
                 ]
             },
             {
-                "caption": "🔎 文本提取|替换|删除",
+                "caption": "🔎 Text Editing | Finding",
                 "children": [
                     {
-                        "caption": "删除特殊字符",
+                        "caption": "Remove Special Chars",
                         "command": "remove_special_chars"
                    },
                    {
-                        "caption": "删除空格",
+                        "caption": "Remove Space Char",
                         "command": "remove_specific_string",
                         "args": {"str":"space"}
                    },
                    {
-                        "caption": "删除 [] 内的信息",
+                        "caption": "Remove Specific String [*]",
                         "command": "remove_specific_string",
                         "args": {"str":"[*]"}
                    },
                    {
-                        "caption": "删除 () 内的信息",
+                        "caption": "Remove Specific String (*)",
                         "command": "remove_specific_string",
                         "args": {"str":"(*)"}
-                   },
-                   {
-                        "caption": "删除匹配的行",
-                        "command": "delete_lines"
-                   },
-                   {
-                        "caption": "提取匹配的行",
-                        "command": "select_lines"
                    },
                    {
                         "caption": "-"
 
                    },
                    {
-                        "caption": "添加前缀 (一行对多行)",
+                        "caption": "Select Lines (match input)",
+                        "command": "select_lines"
+                   },
+                   {
+                        "caption": "Delete Lines (match input)",
+                        "command": "delete_lines"
+                   },
+                   {
+                        "caption": "-"
+
+                   },
+                   {
+                        "caption": "Add Prefix (one->line)",
                         "command": "add_prefix_suffix",
                         "args": {"cmd":"prefix"}
                    },
                    {
-                        "caption": "添加前缀 (多行对多行)",
+                        "caption": "Add Prefix (line->line)",
                         "command": "add_prefix_suffix",
                         "args": {"cmd":"prefix-line"}
                    },
                    {
-                        "caption": "添加后缀 (一行对多行)",
+                        "caption": "Add Suffix (one->line)",
                         "command": "add_prefix_suffix",
                         "args": {"cmd":"suffix"}
                    },
                    {
-                        "caption": "添加后缀 (多行对多行)",
+                        "caption": "Add Suffix (line->line)",
                         "command": "add_prefix_suffix",
                         "args": {"cmd":"suffix-line"}
                    },
@@ -151,49 +155,50 @@
 
                    },
                    {
-                        "caption": "替换Key为Value",
+                        "caption": "Replace Key To Value",
                         "command": "replace_key_to_value"
                    },
                    {
-                        "caption": "替换Value为Key",
+                        "caption": "Replace Value To Key",
                         "command": "replace_value_to_key"
                    },
                    {
-                        "caption": "去重并排序",
+                        "caption": "Sort And Unique",
                         "command": "sort_and_unique_text"
                    },
                 ]
             },
             {
-                "caption": "🖱️ 文本编码|解码",
+                "caption": "🖱️ Text Encode | Decode",
                 "children": [
                     {
-                        "caption": "Base64编码（全部）",
+                        "caption": "Base64 Encode (text)",
                         "command": "base64_encode_text"
                    },
                    {
-                        "caption": "Base64解码（全部）",
+                        "caption": "Base64 Decode (text)",
                         "command": "base64_decode_text"
                    },
                    {
-                        "caption": "Base64编码（按行）",
+                        "caption": "Base64 Encode (line)",
                         "command": "base64_encode_line"
                    },
                    {
-                        "caption": "Base64解码（按行）",
+                        "caption": "Base64 Decode (line)",
                         "command": "base64_decode_line"
                    },
                    {
                         "caption": "-"
 
                    },
+
                    {
-                        "caption": "URL 编码",
+                        "caption": "URL Encode (text)",
                         "command": "url_encode_decode_text",
                         "args": {"cmd":"encode"}
                    },
                    {
-                        "caption": "URL 解码",
+                        "caption": "URL Decode (text)",
                         "command": "url_encode_decode_text",
                         "args": {"cmd":"decode"}
                    },
@@ -201,12 +206,13 @@
                         "caption": "-"
 
                    },
+
                    {
-                        "caption": "Md5加密（全部）",
+                        "caption": "Md5 Hash (text)",
                         "command": "md5_encrypt_text"
                     },
                     {
-                        "caption": "Md5加密（按行）",
+                        "caption": "Md5 Hash (line)",
                         "command": "md5_encrypt_line"
                     },
                 ]
@@ -214,9 +220,9 @@
             {
                 "caption": "-"
 
-           },
+            },
             {
-                "caption": "⭕ 命令运行模块",
+                "caption": "⭕ Running Command",
                 "children": [
                     {
                         "caption": "curl (Download File)",
@@ -246,7 +252,7 @@
                 ]
             },
             {
-                "caption": "♻️ 整理｜高亮工具结果",
+                "caption": "♻️ Format Tools Result",
                 "children": [
                     {
                         "caption": "nmap (xml->host:port)",
@@ -259,12 +265,12 @@
                         "args": {"tool": "nmap", "mode": "domain"}
                     },
                     {
-                        "caption": "dirsx 结果分类|整理",
+                        "caption": "dirsx (classify result)",
                         "command": "format_tools_result",
                         "args": {"tool": "dirsx", "mode": ""}
                     },
                     {
-                        "caption": "fscan 结果分类|整理",
+                        "caption": "fscan (classify result)",
                         "command": "format_tools_result",
                         "args": {"tool": "fscan", "mode": ""}
                     },
@@ -273,32 +279,32 @@
 
                    },
                     {
-                        "caption": "整理|高亮结果 (httpx)",
+                        "caption": "Highlight Text (httpx)",
                         "command": "highlight_httpx_nuclei",
                         "args": {"tool": "httpx"}
                     },
                     {
-                        "caption": "整理|高亮结果 (nuclei)",
+                        "caption": "Highlight Text (nuclei)",
                         "command": "highlight_httpx_nuclei",
                         "args": {"tool": "nuclei"}
                     },
                     {
-                        "caption": "高亮文本",
+                        "caption": "Highlight Text",
                         "command": "highlight_httpx_nuclei",
                         "args": {"tool": "text"}
                     },
                 ]
             },
             {
-                "caption": "🕵️‍♀️ 渗透测试辅助模块",
+                "caption": "🕵️‍♀️ Pentest Help Module",
                 "children": [
                     {
-                        "caption": "文件上传请求包",
+                        "caption": "File Upload Package",
                         "command": "pentest_help_module",
                         "args": {"tool": "upload"}
                     },
                     {
-                        "caption": "生成反弹shell命令",
+                        "caption": "Reverse Shell Tools",
                         "children": [
                             {
                                 "caption": "Shell (bash, /bin/bash)",
@@ -318,13 +324,13 @@
                         ]
                     },
                 ]
-            },
+            }, 
             {
                 "caption": "-"
 
             },
             {
-                "caption": "🌓 Xtools 主题",
+                "caption": "🌓 Xtools Themes",
                 "command": "setting_xtools_theme",
                 "children": [
                     {
@@ -360,26 +366,26 @@
                 ],
             },
             {
-                "caption": "⚙️ Xtools 配置",
+                "caption": "⚙️ Xtools Setting",
                 "children": [
                     {
-                        "caption": "设置 Config",
+                        "caption": "Setting Config",
                         "command": "setting_xtools_config"
                     },
                     {
 
-                        "caption": "中文 🔜 英文",
+                        "caption": "English 🔜 Chinese",
                         "command": "switch_language"
                     },
                 ]
-            },           
+            },
             {
-                "caption": "📝 Xtools 记事本",
+                "caption": "📝 Xtools Notebook",
                 "command": "xtools_note_book"
             }, 
             {
 
-                "caption": "⌨️ 输入文本",
+                "caption": "⌨️ Input Text",
                 "command": "input_text"
             },
             {
@@ -387,7 +393,7 @@
 
             },
             {
-                "caption": "🖥️ 关于 Xtools",
+                "caption": "🖥️ About Xtools",
                 "command": "about_xtools"
             },
         ]
