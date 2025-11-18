@@ -330,6 +330,12 @@ regex_str = r"""
 
     |
 
+    ((?:[a-zA-Z]{1,10}://|//)
+    (?:\d{1,3}\.){3}\d{1,3}
+    (?::\d+)?(?:/[^\s"'<>]*)?)          # Match http://172.16.1.1:80/path
+
+    |
+
     ((?:/|\.\./|\./)                    # Start with /,../,./
     [^"'><,;| *()(%%$^/\\\[\]]          # Next character can't be...
     [^"'><,;|()]{1,})                   # Rest of the characters can't be
@@ -468,7 +474,7 @@ def format_nmap_open_port(xmls, mode):
         import xml.etree.ElementTree
     except:
         sublime.message_dialog('[ERR] could not import xml.etree.ElementTree, please check and install')
-        return
+        return 'format failed'
 
     root = xml.etree.ElementTree.fromstring(xmls)
     text, wafhosts = [], ['\n\n# WAF host:']
@@ -552,7 +558,7 @@ def format_httpx_result(text):
     for text in texts:
         try:
             assert (text.startswith('http://') or text.startswith('https://'))
-            url, code, end = text.split(' ',2)
+            url, code, end = text.split(' ', 2)
         except:
             continue
 
@@ -562,8 +568,7 @@ def format_httpx_result(text):
         sublime.message_dialog('[waring-httpx] The result format is not supported! Please read the docs')
         return ''
 
-    results = '\n'.join(sorted(results))
-    return results
+    return '\n'.join(sorted(results))
 
 
 def format_nuclei_result(text):
