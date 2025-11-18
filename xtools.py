@@ -6,7 +6,8 @@ from .utils import *
 import json,time
 import base64,hashlib
 
-from .lib.classify_fscan_result import classify_fscan_result
+from .lib.format_tools_result import classify_fscan_result
+from .lib.format_tools_result import format_dirsx_result
 
 
 """
@@ -14,7 +15,7 @@ from .lib.classify_fscan_result import classify_fscan_result
 : HOME = '/Users/xxx/'
 : workdir = '$HOME/.xtools'
 """
-# 跨平台支持, 获取 HOME PATH
+# 跨平台支持, 获取 HOME PATH 
 HOME = os.path.expanduser("~")
 
 '''
@@ -45,7 +46,7 @@ except:
 -> 版本信息
 '''
 
-VERSION = '4.2.1'
+VERSION = '4.2.3'
 
 ABOUT_XTOOLS = '''
 About Xtools
@@ -430,27 +431,26 @@ class CurlDownloadFileCommand(sublime_plugin.TextCommand):
 class FormatToolsResultCommand(sublime_plugin.TextCommand):
     def run(self, edit, tool, mode):
         text = get_buffer_text(self.view)
-        global workdir
         
+        if tool == 'fscan':
+            results = classify_fscan_result(text)
+            for key in results.keys():
+                syntax = SYNTAX_FILE if key in ['web-info.txt','weak-password.txt'] else ''
+                new_view(self.view, edit, results.get(key), syntax=syntax, filename=key)
+            
+            return None
+
         if tool == 'nmap':
             try:
                 text = format_nmap_open_port(text, mode)
             except:
                 text = select_nmap_ports_from_xml(text, mode)
 
-        if len(text) > 0:
             new_view(self.view, edit, text)
 
-
-# Classify Fscan result
-class ClassifyFscanResultCommand(sublime_plugin.TextCommand):
-    def run(self,edit):
-        text = get_buffer_text(self.view)
-        results = classify_fscan_result(text)
-        
-        for key in results.keys():
-            syntax = SYNTAX_FILE if key in ['web-info.txt','weak-password.txt'] else ''
-            new_view(self.view, edit, results.get(key), syntax=syntax, filename=key)
+        if tool == 'dirsx':
+            text = format_dirsx_result(text)
+            new_view(self.view, edit, text, SYNTAX_FILE)
 
 
 # highlight httpx nulcie result 
@@ -484,7 +484,7 @@ class PentestHelpModuleCommand(sublime_plugin.TextCommand):
         new_view(self.view, edit, text, 'Markdown.sublime-syntax')
 
 
-# Reserve shell tool
+# Reserve shell tool 
 class ReverseShellToolsCommand(sublime_plugin.TextCommand):
     def run(self, edit, shell):
         ip_port = get_buffer_text(self.view)
@@ -568,7 +568,9 @@ def region_to_text(view,regions):
 
 def get_console_text(view):
     panel = view.window().find_output_panel('exec')
-    text = get_buffer_text(panel).replace('Input Text:\n','')
+    text = panel.substr(Region(0, panel.size()))
+    text = text.replace('Input Text:\n','')
+    
     return text
 
 
