@@ -64,6 +64,10 @@ contexts:
     - match: (?i)(nginx|apache|tomcat|phpinfo|php|phpmyadmin|java|node|Tengine|Spring|HSTS|\ |,)
       scope: xtools.red
 
+    # title keyword
+    - match: (?i)(login|Swagger\ UI|Admin|{"swagger"|druid|{"openapi")
+      scope: xtools.red
+
     - match: (?i)(admin|root):.+
       scope: xtools.peach
 
