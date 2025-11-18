@@ -259,8 +259,14 @@
                         "args": {"tool": "nmap", "mode": "domain"}
                     },
                     {
+                        "caption": "dirsx 结果分类|整理",
+                        "command": "format_tools_result",
+                        "args": {"tool": "dirsx", "mode": ""}
+                    },
+                    {
                         "caption": "fscan 结果分类|整理",
-                        "command": "classify_fscan_result",
+                        "command": "format_tools_result",
+                        "args": {"tool": "fscan", "mode": ""}
                     },
                     {
                         "caption": "-"
