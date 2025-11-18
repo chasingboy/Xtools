@@ -570,7 +570,6 @@ def get_console_text(view):
     panel = view.window().find_output_panel('exec')
     text = panel.substr(Region(0, panel.size()))
     text = text.replace('Input Text:\n','')
-    
     return text
 
 
